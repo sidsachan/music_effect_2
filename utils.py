@@ -160,7 +160,7 @@ def plot_all_evals(train_eval, val_eval, num_removed, y_l):
     plt.legend(loc='upper right')
     plt.xlabel('Threshold angle')
     plt.ylabel(y_l)
-    plt.savefig(y_l, dpi=300)
+    plt.savefig('./Plots/'+y_l, dpi=300)
     plt.show()
 
 
