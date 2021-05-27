@@ -4,6 +4,8 @@ import torch
 import math
 from sklearn.metrics import accuracy_score, f1_score
 from learning import validate
+from dataset import DataFrameDataset
+from torch.utils.data import DataLoader
 
 
 # function to plot losses
@@ -160,3 +162,33 @@ def plot_all_evals(train_eval, val_eval, num_removed, y_l):
     plt.ylabel(y_l)
     plt.savefig(y_l, dpi=300)
     plt.show()
+
+
+# function to convert string of column list
+def strtoarray(chromosome):
+    chromosome = chromosome.replace(" ", "")
+    l = []
+    for c in (chromosome[1:-1]):
+        l.append(ord(c) - ord('0'))
+    column_list = list(np.argwhere(np.array(l) == 1).reshape((-1)))
+    column_list.append(len(l))
+    return column_list
+
+
+# getting dataloaders from a given list of column(a chromosome basically)
+def getdataloaders(train_df, val_df, test_df, chromosome_list, args):
+    train_ = train_df[chromosome_list]
+    val_ = val_df[chromosome_list]
+    test_ = test_df[chromosome_list]
+
+    # define the custom datasets
+    train_dataset = DataFrameDataset(df=train_)
+    val_dataset = DataFrameDataset(df=val_)
+    test_dataset = DataFrameDataset(df=test_)
+
+    # defining the data-loaders
+    train_loader = DataLoader(train_dataset, batch_size=args.batch_size)
+    val_loader = DataLoader(val_dataset, batch_size=args.test_batch_size)
+    test_loader = DataLoader(test_dataset, batch_size=args.test_batch_size)
+
+    return train_loader, val_loader, test_loader
