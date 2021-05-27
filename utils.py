@@ -136,13 +136,14 @@ def eva_model(model, data_loader, args):
 
 
 # to get train and validation losses, accuracy and f1 score
-def get_train_val_eval(model, train_loader, val_loader, args):
+def get_train_val_eval(model, train_loader, val_loader, args, verbose=False):
     train_loss, train_acc = validate(model, train_loader, args)
-    _, train_f1 = eva_model(model, train_loader,args)
+    _, train_f1 = eva_model(model, train_loader, args)
     val_loss, val_acc = validate(model, val_loader, args)
     _, val_f1 = eva_model(model, val_loader, args)
-    print('Training accuracy = ', train_acc.item())
-    print('Validation accuracy = ', val_acc.item())
+    if verbose:
+        print('Training accuracy = ', train_acc.item())
+        print('Validation accuracy = ', val_acc.item())
     return [[train_loss, val_loss], [train_acc, val_acc], [train_f1,val_f1]]
 
 

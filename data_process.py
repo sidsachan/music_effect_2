@@ -68,8 +68,10 @@ def pre_process(file_loc, plot_data = False):
                 # result[column][(p-1)*24:p*24] = (df[column][(p-1)*24:p*24] - mean_value) / (std_value)
         normalized_df_aby.append(result)
     # combining the beta and gamma wave data
-    by_combined = pd.concat([normalized_df_aby[1].iloc[:, :-1], normalized_df_aby[1].iloc[:, :]], axis=1)
+    by_combined = pd.DataFrame(np.hstack((normalized_df_aby[1].iloc[:, :-1].values, normalized_df_aby[2].iloc[:, :].values)))
+    aby_combined = pd.DataFrame(np.hstack((normalized_df_aby[0].iloc[:, :-1].values,normalized_df_aby[1].iloc[:, :-1].values, normalized_df_aby[2].iloc[:, :].values)))
     normalized_df_aby.append(by_combined)
+    normalized_df_aby.append(aby_combined)
     return normalized_df_aby
 
 

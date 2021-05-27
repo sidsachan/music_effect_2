@@ -6,7 +6,7 @@ criterion_sum = nn.CrossEntropyLoss(reduction='sum')        # for validation and
 
 
 # function for training the model
-def train(model, train_loader, val_loader,  optimizer, args):
+def train(model, train_loader, val_loader,  optimizer, args, verbose=True):
     model.train()
     train_loss_list = []
     val_loss_list = []
@@ -30,7 +30,7 @@ def train(model, train_loader, val_loader,  optimizer, args):
         train_loss_list.append(train_loss)
         val_loss, val_acc = validate(model, val_loader, args)
         val_loss_list.append(val_loss)
-        if ep % 10 == 0:
+        if ep % 10 == 0 and verbose==True:
             print('\nTrain epoch: {}, Average train loss: {:.4f}, Train Accuracy: {}/{} ({:.0f}%), Average validation loss: {:.4f}, Validation Accuracy:({:.0f}%)\n'.format(ep,
                 train_loss, correct, len(train_loader.dataset),
                 100. * correct / len(train_loader.dataset), val_loss, val_acc))
@@ -47,8 +47,9 @@ def train(model, train_loader, val_loader,  optimizer, args):
                 'bs': args.batch_size,
                 'hidden_units': args.hidden_units_l1
             }, args.save_path)
-            print('\nModel saved at epoch: {}, with validation accuracy: {:.0f}\n'.format(ep, 100*val_acc))
-    return train_loss_list, val_loss_list
+            if verbose:
+                print('\nModel saved at epoch: {}, with validation accuracy: {:.0f}\n'.format(ep, val_acc))
+    return train_loss_list, val_loss_list, best_val_acc.item()
 
 
 # function to run validation and tests
