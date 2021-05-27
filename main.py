@@ -115,7 +115,7 @@ if args.prune_distinct:
     train_loader, val_loader, _ = getdataloaders(train_df, val_df, test_df, column_list, args)
     model = Layer3Net(num_features, args.hidden_units_l1, num_classes=num_classes)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
-    _, _, best_val_acc = train(model, train_loader, val_loader, optimizer, args, verbose=True)
+
     model, optimizer = load_model(model, optimizer, save_path)
     eval_list = get_train_val_eval(model, train_loader, val_loader, args)
     print('\nEvaluation through sk-learn metrics')
