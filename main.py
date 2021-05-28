@@ -3,7 +3,7 @@ from data_process import pre_process, split
 from dataset import DataFrameDataset
 from network import Layer3Net
 from learning import train, validate, load_model
-from utils import plot_loss, cosine_sim, determine_similar_pairs, extract_activations, remove_neuron_pair, eva_model, get_train_val_eval, plot_all_evals, str_to_column_list, get_data_loaders, get_new_model, plot_acc_size, plot_eval_gen_pruning
+from utils import *
 from genetic_algorithm import initialize_pop, select_top, select_probability, select_top_dual, cross_mutate
 import torch
 from torch.utils.data import DataLoader
@@ -215,7 +215,7 @@ if args.prune_gen_alg:
     population = initialize_pop(dna_size=num_hidden_neurons, pop_size=pop_size)
     cross_rate = 0.8
     mutation_rate = 0.05
-    len_factor = 1.5
+    len_factor = 2
     # lists for performance parameters for plots
     best_val_acc_per_gen = []
     mean_val_acc_per_gen = []
