@@ -3,7 +3,7 @@ from data_process import pre_process, split
 from dataset import DataFrameDataset
 from network import Layer3Net
 from learning import train, validate, load_model
-from utils import plot_loss, cosine_sim, determine_similar_pairs, extract_activations, remove_neuron_pair, eva_model, get_train_val_eval, plot_all_evals, strtoarray, getdataloaders
+from utils import plot_loss, cosine_sim, determine_similar_pairs, extract_activations, remove_neuron_pair, eva_model, get_train_val_eval, plot_all_evals, str_to_column_list, get_data_loaders, get_new_model, plot_acc_size, plot_eval_gen_pruning
 from genetic_algorithm import initialize_pop, select_top, select_probability, select_top_dual, cross_mutate
 import torch
 from torch.utils.data import DataLoader
@@ -22,9 +22,9 @@ parser.add_argument('--lr', type=float, default=0.003, metavar='LR', help='learn
 parser.add_argument('--no-cuda', action='store_true', default=False, help='disables CUDA training')
 parser.add_argument('--seed', type=int, default=1, metavar='S', help='random seed (default: 1)')
 parser.add_argument('--save-path', type=Path, default=save_path, help='path to save the learned model')
-parser.add_argument('--do-training', type=bool, default=True, help='path to save the learned model')
-parser.add_argument('--do-eval', type=bool, default=True, help='path to save the learned model')
-parser.add_argument('--prune-distinct', type=bool, default=True, help='pruning using cosine distinctiveness')
+parser.add_argument('--do-training', type=bool, default=True, help='training the model usual way')
+parser.add_argument('--do-eval', type=bool, default=True, help='evaluation of a loaded model')
+parser.add_argument('--prune-distinct', type=bool, default=False, help='pruning using cosine distinctiveness')
 parser.add_argument('--prune-gen-alg', type=bool, default=True, help='pruning using genetic algorithm')
 parser.add_argument('--gen-alg-input', type=bool, default=False, help='genetic algorithm input space')
 args = parser.parse_args()
@@ -56,6 +56,7 @@ model = Layer3Net(num_features, args.hidden_units_l1, num_classes=num_classes)
 optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
 if args.gen_alg_input:
+    # hyper parameters for the genetic algorithm
     pop_size = 10
     num_generations = 20
     population = initialize_pop(dna_size=num_features, pop_size=pop_size)
@@ -64,19 +65,24 @@ if args.gen_alg_input:
     len_factor = 0.1
 
     for gen in range(num_generations):
-        print_verbose = False
+        print_verbose = False       # variable for printing during training
+        # check if all the elements in a row are zero, make these rows random
+        row_idx_zero = np.where(~population.any(axis=1))[0]
+        if len(row_idx_zero) > 0:
+            dna_len = population.shape[1]
+            population[row_idx_zero] = np.random.randint(0, 2, size=dna_len)
         # evaluate the population
         acc_list = []
         for chromosome_num in range(pop_size):
             # all the features selected as represented by the chromosome
             column_list = list(np.argwhere(population[chromosome_num, :] == 1).reshape((-1)))
-            num_features_temp = len(column_list)
+            num_input_features = len(column_list)
             # last column is target, must be selected
             column_list.append(num_features)
-            train_loader, val_loader, _ = getdataloaders(train_df, val_df, test_df, column_list, args)
+            train_loader, val_loader, _ = get_data_loaders(train_df, val_df, test_df, column_list, args)
 
-            model = Layer3Net(num_features_temp, args.hidden_units_l1, num_classes=num_classes)
-            print(model)
+            model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
+
             optimizer = optim.Adam(model.parameters(), lr=args.lr)
             _, _, best_val_acc = train(model, train_loader, val_loader, optimizer, args, verbose=print_verbose)
             acc_list.append(best_val_acc)
@@ -110,9 +116,9 @@ if args.gen_alg_input:
 if args.prune_distinct:
     # load model and run validation/test set through it
     chromosome = '[0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 1 1 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 1 1 0]'
-    column_list = strtoarray(chromosome=chromosome)
+    column_list = str_to_column_list(chromosome=chromosome)
     num_features = len(column_list)-1
-    train_loader, val_loader, _ = getdataloaders(train_df, val_df, test_df, column_list, args)
+    train_loader, val_loader, _ = get_data_loaders(train_df, val_df, test_df, column_list, args)
     model = Layer3Net(num_features, args.hidden_units_l1, num_classes=num_classes)
     optimizer = optim.Adam(model.parameters(), lr=args.lr)
 
@@ -154,10 +160,6 @@ if args.prune_distinct:
                 h = h - 1
                 pruned_model = Layer3Net(num_features, h, num_classes)
                 pruned_model = remove_neuron_pair(temp_model, pruned_model, similar_pairs[0])
-                # eval_list = get_train_val_eval(pruned_model, train_loader, val_loader, args)
-                # print('\nEvaluation through sk-learn metrics')
-                # print('Training F1 score: ', eval_list[2][0])
-                # print('Validation F1 score: ', eval_list[2][1])
                 temp_model = Layer3Net(num_features, h, num_classes)
                 temp_model.load_state_dict(pruned_model.state_dict())
             elif len(comp_pairs) != 0:
@@ -166,10 +168,6 @@ if args.prune_distinct:
                 h = h - 1
                 pruned_model = Layer3Net(num_features, h, num_classes)
                 pruned_model = remove_neuron_pair(temp_model, pruned_model, comp_pairs[0], complement=True)
-                # eval_list = get_train_val_eval(pruned_model, train_loader, val_loader, args)
-                # print('\nEvaluation through sk-learn metrics')
-                # print('Training F1 score: ', eval_list[2][0])
-                # print('Validation F1 score: ', eval_list[2][1])
                 temp_model = Layer3Net(num_features, h, num_classes)
                 temp_model.load_state_dict(pruned_model.state_dict())
             else:
@@ -197,4 +195,89 @@ if args.prune_distinct:
 
 # genetic algorithm pruning
 if args.prune_gen_alg:
-    pass
+    # initializing the base model and data loaders according to the chromosome
+    chromosome = '[0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 1 1 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 1 1 0]'
+    column_list = str_to_column_list(chromosome=chromosome)
+    num_input_features = len(column_list) - 1
+    train_loader, val_loader, _ = get_data_loaders(train_df, val_df, test_df, column_list, args)
+    base_model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
+    # load model and run validation/test set through it
+    base_model, _ = load_model(base_model, optimizer, save_path)
+    eval_list = get_train_val_eval(base_model, train_loader, val_loader, args)
+    print('\nEvaluation through sk-learn metrics')
+    print('Training F1 score: ', eval_list[2][0])
+    print('Validation F1 score: ', eval_list[2][1])
+
+    # hyper parameters for the genetic algorithm
+    pop_size = 100
+    num_generations = 30
+    num_hidden_neurons = args.hidden_units_l1
+    population = initialize_pop(dna_size=num_hidden_neurons, pop_size=pop_size)
+    cross_rate = 0.8
+    mutation_rate = 0.05
+    len_factor = 1.5
+    # lists for performance parameters for plots
+    best_val_acc_per_gen = []
+    mean_val_acc_per_gen = []
+    mean_train_acc_per_gen = []
+    mean_length_per_gen = []
+    mean_val_loss_per_gen = []
+    mean_train_loss_per_gen = []
+    mean_train_f1_per_gen = []
+    mean_val_f1_per_gen = []
+    # pruning algorithm through genetic algorithm
+    for gen in range(num_generations):
+        # check if all the elements in a row are zero, make these rows random
+        row_idx_zero = np.where(~population.any(axis=1))[0]
+        if len(row_idx_zero)>0:
+            dna_len = population.shape[1]
+            population[row_idx_zero] = np.random.randint(0, 2, size=dna_len)
+        # evaluate the population
+        val_acc_list = []
+        val_loss_list =[]
+        train_acc_list = []
+        train_loss_list = []
+        train_f1_list =[]
+        val_f1_list = []
+        for chromosome in population:
+            # new number of hidden neurons for the new model
+            new_num_hidden_neurons = np.sum(chromosome)
+            # copy parameters to new model
+            m_temp = Layer3Net(num_input_features, new_num_hidden_neurons, num_classes=num_classes)
+            new_model = get_new_model(base_model, m_temp, chromosome=chromosome)
+            # run validation for the new model
+            eval_list = get_train_val_eval(new_model, train_loader, val_loader, args)
+            # evaluation parameters
+            train_loss_list.append(eval_list[0][0])
+            val_loss_list.append(eval_list[0][1])
+            train_acc_list.append(eval_list[1][0])
+            val_acc_list.append(eval_list[1][1])
+            train_f1_list.append(eval_list[2][0])
+            val_f1_list.append(eval_list[2][1])
+        # best validation accuracy, chromosome
+        best_idx = val_acc_list.index(max(val_acc_list))
+        m_length = np.sum(population) / len(population)
+        # updating the lists for the plots
+        best_val_acc_per_gen.append(max(val_acc_list))
+        mean_val_acc_per_gen.append(np.mean(np.array(val_acc_list)))
+        mean_val_loss_per_gen.append(np.mean(np.array(val_loss_list)))
+        mean_length_per_gen.append(m_length)
+        mean_train_acc_per_gen.append(np.mean(np.array(train_acc_list)))
+        mean_train_loss_per_gen.append(np.mean(np.array(train_loss_list)))
+        mean_train_f1_per_gen.append(np.mean(np.array(train_f1_list)))
+        mean_val_f1_per_gen.append(np.mean(np.array(val_f1_list)))
+        # information about pruning performance
+        print('Generation', gen+1)
+        print('Length of Chromosome', len(np.argwhere(population[best_idx, :] == 1)))
+        print('Average size of hidden layer', m_length)
+        print('Best validation accuracy', max(val_acc_list))
+        print('Corresponding chromosome', population[best_idx, :])
+        # selecting new population, top 25
+        population = select_top_dual(population, val_acc_list, top_count=25, len_factor=len_factor)
+        # crossover and mutate
+        population = cross_mutate(population, cross_rate, mutation_rate)
+    # plotting the accuracy and mean size
+    plot_acc_size(best_acc_list=best_val_acc_per_gen, mean_acc_list=mean_val_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor)
+    plot_eval_gen_pruning(mean_train_acc_per_gen, mean_val_acc_per_gen, y_l='Accuracy', len_factor=len_factor)
+    plot_eval_gen_pruning(mean_train_loss_per_gen, mean_val_loss_per_gen, y_l='Loss', len_factor=len_factor)
+    plot_eval_gen_pruning(mean_train_f1_per_gen, mean_val_f1_per_gen, y_l='F1 score', len_factor=len_factor)

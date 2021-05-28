@@ -146,14 +146,15 @@ def get_train_val_eval(model, train_loader, val_loader, args, verbose=False):
     if verbose:
         print('Training accuracy = ', train_acc.item())
         print('Validation accuracy = ', val_acc.item())
-    return [[train_loss, val_loss], [train_acc, val_acc], [train_f1,val_f1]]
+    return [[train_loss, val_loss], [train_acc, val_acc], [train_f1, val_f1]]
 
 
 # function to plot the evaluation measures after pruning
 def plot_all_evals(train_eval, val_eval, num_removed, y_l):
     x = np.arange(10, 60, 5)
     plt.plot(x, train_eval, label='Training data', marker='o')
-    plt.plot(x, val_eval,label='Validation data', marker='*')
+    plt.plot(x, val_eval, label='Validation data', marker='*')
+
     for i in range(len(x)):
         plt.annotate('('+str(num_removed[i])+')', (x[i], train_eval[i]), xytext=(-10, 20), textcoords='offset pixels')
         plt.annotate('('+str(num_removed[i])+')', (x[i], val_eval[i]), xytext=(-10, 20), textcoords='offset pixels')
@@ -165,18 +166,18 @@ def plot_all_evals(train_eval, val_eval, num_removed, y_l):
 
 
 # function to convert string of column list
-def strtoarray(chromosome):
+def str_to_column_list(chromosome):
     chromosome = chromosome.replace(" ", "")
     l = []
     for c in (chromosome[1:-1]):
         l.append(ord(c) - ord('0'))
-    column_list = list(np.argwhere(np.array(l) == 1).reshape((-1)))
+    column_list = list(np.argwhere(np.array(l) == 1).reshape(-1))
     column_list.append(len(l))
     return column_list
 
 
-# getting dataloaders from a given list of column(a chromosome basically)
-def getdataloaders(train_df, val_df, test_df, chromosome_list, args):
+# getting data loaders from a given list of column(a chromosome basically) and raw (already split) dataframes
+def get_data_loaders(train_df, val_df, test_df, chromosome_list, args):
     train_ = train_df[chromosome_list]
     val_ = val_df[chromosome_list]
     test_ = test_df[chromosome_list]
@@ -192,3 +193,55 @@ def getdataloaders(train_df, val_df, test_df, chromosome_list, args):
     test_loader = DataLoader(test_dataset, batch_size=args.test_batch_size)
 
     return train_loader, val_loader, test_loader
+
+
+# function to copy model parameters given a model and a chromosome for hidden layer
+def get_new_model(base_model, new_model, chromosome):
+    # the full weights of the base model
+    fc1_w = base_model.state_dict()['fc1.weight']  # h x n
+    fc1_b = base_model.state_dict()['fc1.bias']  # h
+    fc2_w = base_model.state_dict()['fc2.weight']  # c x h
+    fc2_b = base_model.state_dict()['fc2.bias']  # c
+    neurons_to_include = list(np.argwhere(chromosome==1).reshape(-1))
+    with torch.no_grad():
+        # assign the weights from model_in, skip the high index, this is the removed neuron
+        new_model.fc1.weight = torch.nn.Parameter(fc1_w[neurons_to_include, :])
+        new_model.fc1.bias = torch.nn.Parameter(fc1_b[neurons_to_include])
+        new_model.fc2.weight = torch.nn.Parameter(fc2_w[:, neurons_to_include])
+        new_model.fc2.bias = torch.nn.Parameter(fc2_b)
+    return new_model
+
+
+# plotting mean and best accuracy after pruning, genetic algorithm
+def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor):
+    x = np.arange(len(best_acc_list))
+    fig, ax1 = plt.subplots()
+    ax1.set_xlabel('Generation')
+    ax1.set_ylabel('Validation Accuracy')
+    lns1 = ax1.plot(x, best_acc_list, label='Best Accuracy', color='tab:red')
+    lns2 = ax1.plot(x, mean_acc_list, label='Mean Accuracy', color='tab:green')
+    ax2 = ax1.twinx()
+    ax2.set_ylabel('Mean size of the Hidden Layer')
+    lns3 = ax2.plot(x, mean_length, label='Mean Size', color='tab:blue')
+    # added these three lines
+    lns = lns1 + lns2 + lns3
+    labs = [l.get_label() for l in lns]
+    ax1.legend(lns, labs, loc='upper right')
+    plt.title('Validation accuracy after pruning')
+    save_path = 'Plots/acc_len_pruning_' + str(len_factor) + '.png'
+    plt.savefig(save_path, dpi=300)
+    plt.show()
+
+
+# plot train and validation performance after pruning
+def plot_eval_gen_pruning(train_eval, val_eval, y_l, len_factor):
+    x = np.arange(len(train_eval))
+    plt.plot(x, train_eval, label='Training')
+    plt.plot(x, val_eval, label='Validation')
+    plt.legend(loc='upper right')
+    plt.xlabel('Generation')
+    plt.ylabel('Average ' + y_l)
+    plt.title('Average '+ y_l + ' after pruning')
+    save_path = 'Plots/perf_prune_' + y_l + '_' + str(len_factor) + '.png'
+    plt.savefig(save_path, dpi=300)
+    plt.show()
