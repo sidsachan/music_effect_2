@@ -12,3 +12,5 @@ The arguments for different parts of the code
 
 The chromosomes required for train_chromosome, prune_distinct, prune_gen_alg are from the line 360 of
 'log_input_genetic_alg.txt'. Relevant hyper-parameters of genetic algorithm can be found around there.
+
+To get Figure 3 of the paper, uncomment the last line of utils.py

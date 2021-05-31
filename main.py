@@ -27,7 +27,7 @@ parser.add_argument('--no-cuda', action='store_true', default=False, help='disab
 parser.add_argument('--seed', type=int, default=1, metavar='S', help='random seed (default: 1)')
 parser.add_argument('--save-path', type=Path, default=save_path, help='path to save the learned model')
 parser.add_argument('--train_simple', type=bool, default=False, help='train model usual way')
-parser.add_argument('--train_chromosome', type=bool, default=False, help='train model given a string of chromosome')
+parser.add_argument('--train_chromosome', type=bool, default=True, help='train model given a string of chromosome')
 parser.add_argument('--prune-distinct', type=bool, default=True, help='pruning using cosine distinctiveness')
 parser.add_argument('--prune-gen-alg', type=bool, default=True, help='pruning using genetic algorithm')
 parser.add_argument('--gen-alg-input', type=bool, default=False, help='genetic algorithm input space selection')
