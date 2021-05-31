@@ -40,11 +40,14 @@ def select_top_dual(pop, acc_list, top_count=5, len_factor=0.1):
     np.random.shuffle(selected_pop)
     return selected_pop
 
+
 # function to choose chromosomes according to their accuracy
 # done with replacement so as to allow repeats
-def select_probability(pop, acc_list):
+def select_probability(pop, acc_list, len_factor=0.1):
     pop_size = len(pop)
-    acc = np.array(acc_list)
+    acc = np.array(acc_list) - len_factor * np.sum(pop, axis=1)
+    # less than zero gets zero probability, avoid divide by zero (add epsilon)
+    acc[np.where(acc<0)] = 0 + 1e-5
     idx = np.random.choice(np.arange(pop_size), size=pop_size, replace=True,
                            p=acc / np.sum(acc))
     return pop[idx]

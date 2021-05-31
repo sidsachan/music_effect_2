@@ -1,0 +1,1272 @@
+Experiments
+Batch size = 2
+Epochs = 200
+Lr = 0.003
+EXP1
+
+pop_size = 20
+num_generations = 5
+cross_rate = 0.8
+mutation_rate = 0.1
+Selection-> top 5
+
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 1 1 1 0 1 0 0 1 1 0 1 0 1 0 0 0 0 1 1 1 0 0 1 1 1 0 0 0 1 1 1 1 1 0 0 1
+ 1 1 0 1 1 1 0 0 0 1 1 1 0 1 0 0 0 1 1 1 0 0 0 1 1 1 0 1 0 0 1 0 1 1 1 1 1
+ 0]
+Best validation accuracy 73.68421173095703
+Length =39
+Corresponding chromosome [1 0 0 1 0 1 0 0 0 1 0 1 1 0 1 1 1 0 1 0 1 0 1 1 0 1 0 0 1 1 1 0 0 1 1 1 1
+ 1 0 1 0 1 1 0 0 1 1 1 0 0 1 1 0 0 1 0 1 0 0 1 1 1 0 0 0 0 0 1 1 1 0 0 1 0
+ 0]
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 1 1 1 0 1 1 1 1 0 0 1 1 1 0 0 1 0
+ 1 0 1 1 1 0 0 0 1 0 1 0 1 1 1 0 1 1 1 1 1 1 1 0 1 0 0 1 1 0 1 1 1 0 0 1 0
+ 1]
+Best validation accuracy 73.68421173095703
+Length =33
+Corresponding chromosome [0 1 0 0 0 1 0 0 0 1 0 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0 0 0 0 1 0 0 0 1 1 1 1
+ 1 0 1 0 1 0 0 0 1 0 0 0 1 1 0 0 1 1 0 0 0 0 0 1 1 0 1 1 0 1 1 1 1 0 0 1 1
+ 0]
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0 1 1 0 0 0 1 0 0 0 0 1 0 1 0 0 1 0
+ 1 0 1 1 1 1 0 0 1 0 1 0 1 1 1 0 1 1 1 1 1 1 0 0 1 1 0 0 1 1 1 1 1 1 0 1 0
+ 0]
+
+EXP2
+pop_size = 30
+num_generations = 5
+cross_rate = 0.8
+mutation_rate = 0.1
+Selection-> top 5
+
+Generation 0
+Length of Chromosome 44
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [0 1 1 1 0 1 1 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 0 1 1 1 1
+ 1 1 1 0 1 0 0 1 1 0 1 1 1 0 1 1 1 1 1 0 0 1 1 1 0 1 1 1 1 1 0 1 1 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [9, 17, 18]
+Generation 1
+Length of Chromosome 38
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 1 1 1 0 0 0 0 1 0 1 1 1 0 1 1 1 0 1 0 0 0 1 0 1 0 1 0 1 1 1 1 1 1 0 1
+ 1 0 1 1 0 0 1 0 0 0 1 1 0 0 0 0 1 1 0 0 0 0 1 1 0 0 1 0 0 1 0 1 0 1 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [14, 15, 9]
+Generation 2
+Length of Chromosome 37
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 0 1 0 0 1 1 0 1 1 0 1 0 0 1 0 0 1 1 0 0 0 1 0 1 0 1 1 1 1 0 0 0 0
+ 1 1 1 0 1 0 1 1 0 0 0 1 0 0 1 0 1 1 1 0 1 0 1 0 0 1 1 0 0 1 0 1 0 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [11, 13, 13]
+Generation 3
+Length of Chromosome 33
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [0 1 0 1 0 0 0 0 0 0 0 1 1 1 0 1 1 1 0 1 0 0 0 0 0 1 0 1 1 0 0 1 1 1 1 1 1
+ 0 0 1 1 1 0 1 1 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 1 0 0 1 1 0 0 1 1 0 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 14, 10]
+Generation 4
+Length of Chromosome 39
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [0 0 0 1 0 1 0 0 1 1 0 0 0 0 1 0 1 1 0 0 1 1 1 0 0 1 0 1 1 1 1 1 0 1 1 0 0
+ 1 1 1 1 1 0 1 1 0 0 1 0 1 0 1 0 0 0 1 1 1 0 1 0 1 1 0 0 0 1 1 0 0 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 17, 12]
+
+EXP 3:
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+Select Top->3
+
+Generation 1
+Length of Chromosome 41
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 1 1 1 1 1 1 1 0 1 1 1 1 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 1 1 1 0 1 1 1
+ 1 1 1 0 1 0 0 0 1 1 1 0 0 1 1 0 0 1 1 0 0 0 0 1 0 0 1 0 1 1 1 1 0 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [14, 14, 13]
+
+Generation 2
+Length of Chromosome 39
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 1 1 1 0 1 1 1
+ 1 1 0 0 1 0 0 0 1 0 1 0 0 1 1 0 0 1 1 1 0 0 0 1 0 0 1 0 1 1 1 1 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [15, 12, 12]
+
+Generation 3
+Length of Chromosome 40
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 1 0 1 1 1 0 0 0 0 1 1 0 1 0 1 0 0 0 1 1 0 0 1 1 1 1 0 1 1 0
+ 1 1 0 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1 1 0 1 1 0 1 0 0 1 0 1 1 1 1 1 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [12, 12, 16]
+
+Generation 4
+Length of Chromosome 40
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 1 0 1 1 1 0 0 0 0 1 1 0 1 0 1 0 0 0 1 0 1 0 1 1 1 1 1 1 1 0
+ 1 1 0 0 0 0 1 1 1 0 1 0 0 1 1 0 0 1 1 0 0 0 0 1 0 0 1 0 1 1 1 1 1 0 1 1 0
+ 0]
+[alpha, beta, gamma] contribution: [12, 15, 13]
+
+Generation 5
+Length of Chromosome 40
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 1 0 1 1 1 1 1 0 1 1 0 0 1 0 0 1 1 0 0 0 1 0 0 0 1 1 1 0 1 0 1 1 0 1 1 0
+ 1 1 0 1 1 0 0 0 1 0 1 0 0 0 1 0 0 1 1 0 1 1 0 1 1 0 1 0 0 1 1 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [12, 14, 14]
+
+Generation 6
+Length of Chromosome 37
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 0 1 1 0 1 0 0 1 1 0 0 0 0 0 1 1 0 1 0 1 0 0 0 1 1 1 0 1 0 0 0 1 1 1 0
+ 0 1 0 1 1 1 0 0 0 0 0 0 0 0 1 0 0 1 1 0 1 1 0 1 1 0 1 0 1 1 1 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 11, 15]
+
+Generation 7
+Length of Chromosome 37
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 1 1 0 0 0 0 0 1 1 1 1 0 1 0 0 0 1 1 0 1 1 1 0 0 1 1 1 0
+ 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 1 1 0 1 0 1 1 1 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 11, 15]
+
+Generation 8
+Length of Chromosome 40
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 1 0 0 0 0 0 1 1 1 1 1 0 0 1 0 1 1 1 0 1 1 1 1 0 1 1 0 0
+ 0 1 0 0 1 1 0 0 1 0 0 0 1 1 0 0 0 1 1 1 0 1 0 1 1 1 1 1 0 1 1 1 1 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [12, 13, 15]
+
+Generation 9
+Length of Chromosome 34
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 0 1 0 0 0 1 0 1 1 0 1 0 1 0 0 0 1 1 1 0 1 1 0 0 1 1 0 0
+ 0 1 0 1 1 0 0 0 0 0 1 0 0 0 0 0 0 1 1 1 1 1 0 1 1 0 0 0 0 1 1 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 13]
+
+Generation 10
+Length of Chromosome 48
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 1 0 1 1 0 1 0 0 1 1 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 1 1
+ 1 1 0 1 1 1 0 1 1 0 0 0 0 1 0 0 1 1 1 1 0 1 0 1 1 0 0 1 0 1 1 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [15, 18, 15]
+
+EXP 4:
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+Select Dual-> top 3, acc-0.1*length
+
+Generation 1
+Length of Chromosome 35
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 1 0 0 1 0 1 1 0 0 0 1 1 1 1 0 0 1 0 1 1 0 0 0 1 0 0 0 1 1 0 0 0 1 0
+ 1 1 1 0 0 0 0 0 1 0 1 0 1 0 0 1 1 1 1 0 0 1 1 1 1 0 1 1 1 1 0 0 0 0 0 0 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 10, 13]
+Generation 2
+Length of Chromosome 40
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 1 1 1 0 0 0 0 1 1 1 0 1 1 0 1 0 1 0 0 0 0 1 0 0 0 1 0 1 1 1 1 0 1 0 1
+ 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 1 1 1 0 0 1 1 0 0 0 1 1 1 0 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [13, 13, 14]
+Generation 3
+Length of Chromosome 42
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 1 0 1 0 0 1 0 1 1 0 0 1 1 0 1 0 1 1 0 0 0 1 0 0 0 1 0 1 1 1 1 0 1 0 1
+ 0 0 1 0 1 1 0 1 0 1 0 1 0 1 0 0 1 1 1 1 0 0 1 1 0 1 0 1 1 1 0 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [13, 13, 16]
+Generation 4
+Length of Chromosome 41
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 1 1 1 0 1 0 0 0 1 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 0 1 0 1 1 1 1 1 0 1 1
+ 0 0 1 1 1 1 0 0 0 1 0 1 0 1 1 0 1 1 1 1 1 1 1 1 0 0 0 0 1 0 0 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 14, 15]
+Generation 5
+Length of Chromosome 33
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 1 0 0 0 0 0 0 1 0 0 1 1 1 0 1 1 0
+ 0 0 1 0 1 1 0 0 0 0 1 0 0 1 0 0 0 1 1 0 0 1 1 1 0 1 0 1 1 1 0 1 1 1 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 10, 14]
+Generation 6
+Length of Chromosome 40
+Best validation accuracy 78.9473648071289
+Corresponding chromosome [1 0 1 0 1 1 0 1 0 1 1 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0 1 1 1 1 0 1 1 0
+ 0 1 1 0 1 1 0 0 0 0 1 1 0 1 0 0 1 1 1 1 0 1 1 1 0 1 0 1 1 1 1 0 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [10, 13, 17]
+Generation 7
+Length of Chromosome 35
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 1 0 1 0 0 1 1 1 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 1 0 1 0 1 0 1 1 1
+ 0 0 1 0 1 1 0 0 0 0 1 0 0 1 0 0 1 1 1 0 0 1 1 1 0 1 1 1 1 1 0 1 1 1 1 0 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 10, 16]
+Generation 8
+Length of Chromosome 33
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 1 1 1 1 0 1 1 0 0 0 0 0 1 0 0 1 0 1 1 0 1 0 0 0 0 0 1 0 1 0 1 1 1
+ 0 0 1 0 1 1 0 0 0 0 1 0 0 1 0 0 1 1 1 0 0 1 1 0 0 1 1 0 1 1 0 0 0 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [12, 9, 12]
+Generation 9
+Length of Chromosome 28
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 1 0 1 1 1
+ 0 0 1 0 1 1 0 0 0 0 0 0 0 0 0 0 1 1 1 0 0 0 1 0 0 1 1 0 1 1 1 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [9, 7, 12]
+Generation 10
+Length of Chromosome 42
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 1 1 1 1 1 0 0 1 0 1 0 1 0 1 0 1 1 1 0 1 0 0 1 0 1 1 1 0 0 1 1 0 1 0 0
+ 0 1 1 1 1 1 0 1 0 0 0 0 1 1 0 0 0 1 1 0 1 1 1 0 0 1 1 1 1 1 0 0 1 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [14, 13, 15]
+
+EXP 5:
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+Select Dual-> top 3, acc - 0.25*length
+
+Generation 1
+Length of Chromosome 36
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 1 0 0 1 1 1 0 0 0 0 0 1 0 0 0 1 0 0 1 1 1 0 1 1 1 1 1 0 0 1 0 0 1 1 1
+ 0 0 1 1 0 0 1 0 0 1 1 0 0 1 0 0 0 0 0 0 0 1 1 1 0 0 1 1 1 1 1 0 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [11, 13, 12]
+Generation 2
+Length of Chromosome 35
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 0 0 1 1 1 0 0 1 0 0 1 0 0 0 1 0 0 1 1 0 0 1 1 1 0 0 1 0 1 0 1 1 1 1
+ 0 0 1 1 0 0 1 0 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 0 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [11, 13, 11]
+Generation 3
+Length of Chromosome 39
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 1 0 1 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 1 1 0 1 1 0
+ 0 1 0 1 0 1 1 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 1 1 1 0 1 1 1 1 1 1 1 0 1 1 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 13, 14]
+Generation 4
+Length of Chromosome 37
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 1 1 0 0 0 1 1 0 1 0 0 0 1 1 0 0 0 1 0 1 1 0 0 1 1 1 0 1 0 0 1 0 1 0 1 1
+ 1 0 1 1 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 0 1 0 1 1 1 0 0 1 1 1 1 1 1 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [12, 13, 12]
+Generation 5
+Length of Chromosome 29
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 1 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 1 0 1 1 0 0 1 0 1 0 1 0 0 1 0 0 1 1 1
+ 1 0 0 0 0 1 1 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 0 1 1 0 1 1 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 10, 10]
+Generation 6
+Length of Chromosome 34
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 0 0 1 0 1 0 1 0 0 1 0 0 0 0 0 1 0 1 1 0 0 1 0 1 0 1 0 0 0 1 0 1 1 1
+ 1 0 0 0 0 1 1 0 0 1 0 0 0 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1 1 0 1 1 0 1 1 1
+ 0]
+[alpha, beta, gamma] contribution: [10, 10, 14]
+Generation 7
+Length of Chromosome 27
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 0 0 1 0 1 0 0 0 0 1 1 0 0 0 0 1 0 0 1 0 0 1 1 0 1 0 1 0 0 1 0 0 1 1
+ 0 0 0 0 0 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 1 0 1 1 1
+ 0]
+[alpha, beta, gamma] contribution: [9, 11, 7]
+Generation 8
+Length of Chromosome 34
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 1 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 1 0 1 1 0 0 1 0 1 0 1 1 0 0 1 0 0 1 0
+ 0 0 0 1 0 1 1 0 0 1 1 0 0 1 0 1 0 1 0 0 0 0 1 0 0 1 1 0 1 1 0 1 1 1 1 1 1
+ 0]
+[alpha, beta, gamma] contribution: [10, 10, 14]
+Generation 9
+Length of Chromosome 32
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 1 0 1 0 1 0 1 0 0 0 0 1 0 0 0 1 0 0 1 0 1 1 1 0 1 1 1 0 0 1 0 1 1 1
+ 0 0 0 0 0 1 1 1 0 0 1 0 0 0 0 1 0 1 0 0 0 0 1 0 0 0 0 0 1 0 0 1 1 0 1 1 1
+ 0]
+[alpha, beta, gamma] contribution: [11, 12, 9]
+Generation 10
+Length of Chromosome 30
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 1 0 0 1 1 1 1 1 0 1 1 0 0 0 0 0 1 0 1 1 0 0 1 1 0 0 0 1 1 0 1 1 0 1 0
+ 0 1 0 0 0 1 0 1 0 1 1 0 0 0 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 0 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 11, 7]
+
+
+EXP 6:
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+Select Dual-> top 3, acc - 0.5*length
+
+Generation 1
+Length of Chromosome 38
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 1 1 0 0 0 1 1 0 0 1 1 1 0 1 0 0 0 1 0 1 1 0
+ 1 0 1 1 1 1 1 1 1 0 1 0 0 1 1 0 0 1 0 0 1 1 1 1 1 1 0 0 0 1 1 0 0 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [9, 15, 14]
+Generation 2
+Length of Chromosome 34
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 1 0 0 1 0 0 1 0 0 1 1 1 0 0 1 0 0 0 0 0 0 1 0 0 1 0 1 0 0 0 1 0 1 1 0
+ 1 0 0 1 1 1 1 0 1 0 1 0 0 1 1 0 0 1 0 0 1 1 0 1 0 1 0 0 1 1 1 0 1 0 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [9, 12, 13]
+Generation 3
+Length of Chromosome 39
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 0 1 1 0 1 0 0 0 0 1 0 1 0 0 0 1 1 1 0 0 0 1 1 1 1 0 0 0 1 0 1 0 0
+ 1 0 1 1 1 1 0 0 1 0 1 0 0 1 1 1 0 1 1 0 1 1 1 1 0 1 0 0 0 1 1 0 1 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 13, 16]
+Generation 4
+Length of Chromosome 38
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 0 0 0 1 0 0 1 0 0 0 1 1 1 0 1 0 0 0 1 1 1 0 1 1 1 1 1 0 0 0 1 1 1 0 0
+ 1 0 0 1 1 1 1 1 1 0 1 0 0 1 1 0 0 1 0 0 1 1 1 1 1 1 0 0 0 1 1 0 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [11, 15, 12]
+Generation 5
+Length of Chromosome 40
+Best validation accuracy 84.21052551269531
+Corresponding chromosome [1 0 1 0 0 1 0 0 1 0 0 0 1 1 1 1 1 1 0 0 0 1 0 0 1 1 0 1 1 0 0 0 0 1 1 1 0
+ 1 0 0 1 1 1 0 1 1 0 1 0 0 1 1 0 1 1 1 0 1 1 0 1 1 0 1 0 1 1 1 1 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [12, 13, 15]
+Generation 6
+Length of Chromosome 39
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 0 0 0 1 0 0 1 1 0 1 1 1 0 0 0 1 1 1 0
+ 1 0 0 1 1 1 0 1 1 0 1 0 0 1 1 0 1 1 1 0 1 0 0 1 1 0 1 0 1 1 1 1 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [11, 14, 14]
+Generation 7
+Length of Chromosome 37
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 0 1 1 0 0 0 0 0 1 1 0 1 1 0 0 0 0 1 0 0 1 1 1 1 1 0 0 0 0 1 1 0 0
+ 1 0 1 1 0 1 0 1 1 0 1 0 0 1 1 0 1 1 1 0 1 0 0 1 1 1 1 0 1 0 1 1 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [10, 13, 14]
+Generation 8
+Length of Chromosome 36
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 0 1 1 0 0 1 1 1 0 0 0 0 1 0 0 0 1 1 1 0 0 1 0 1 1 1 0 0 0 1 1 0 0
+ 1 0 0 1 1 1 0 0 1 0 1 0 1 1 0 0 0 1 0 0 0 1 1 0 1 1 1 0 1 1 1 0 0 1 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 13, 12]
+Generation 9
+Length of Chromosome 31
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 0 1 1 0 0 1 0 1 0 1 1 0 0 0 1 0 1 1 0 0 0 1 0 0 0 0 0 0 0 1 1 1 0
+ 0 0 0 1 1 1 0 0 1 0 1 0 1 1 0 0 0 1 0 0 0 1 0 0 1 1 1 0 0 1 1 0 0 1 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 10, 10]
+Generation 10
+Length of Chromosome 37
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 1 1 1 0 0 1 0 1 0 1 1 0 0 0 0 0 1 1 0 0 0 1 0 1 0 0 0 0 0 1 1 0 1
+ 0 0 1 1 1 1 0 1 1 0 1 0 1 1 1 0 1 1 1 0 0 1 0 0 0 1 1 0 0 1 1 0 0 1 1 0 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 13, 13]
+
+
+EXP 7:
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+Select Dual-> top 3, acc - 0.2*length
+
+Generation 1
+Length of Chromosome 43
+Best validation accuracy 52.6315803527832
+Corresponding chromosome [0 0 1 0 0 1 0 1 1 0 0 0 0 1 1 0 0 1 1 0 0 1 1 0 1 1 1 1 0 1 1 1 0 0 0 0 0
+ 0 1 1 1 1 1 0 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 0 1 1 1 0 1 1 1 0 0 0 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [11, 14, 18]
+Generation 2
+Length of Chromosome 43
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 0 0 0 1 0 0 1 0 0 0 1 1 1 0 1 1 1 1 1 1 0 0 1 0 1 0 0 1 1 0 0 1 0 0 0
+ 0 1 1 1 1 1 0 1 1 0 1 0 1 1 1 0 1 0 1 0 1 1 1 1 1 1 1 1 1 1 0 0 0 1 1 0 1
+ 1]
+[alpha, beta, gamma] contribution: [12, 13, 18]
+Generation 3
+Length of Chromosome 36
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 0 0 0 1 0 0 1 1 0 0 1 0 1 0 0 0 1 1 1 1 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0
+ 0 1 0 1 1 1 0 1 1 0 1 0 1 1 1 0 1 0 1 1 1 1 0 0 1 0 1 1 1 1 0 0 0 1 1 0 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 10, 16]
+Generation 4
+Length of Chromosome 38
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [0 0 0 0 0 1 0 0 1 1 1 0 1 0 1 0 0 0 1 1 1 1 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1
+ 0 1 0 1 1 1 0 1 1 0 1 0 0 1 0 1 1 0 1 1 1 1 0 0 1 0 1 1 1 1 0 0 0 1 1 0 1
+ 1]
+[alpha, beta, gamma] contribution: [11, 11, 16]
+Generation 5
+Length of Chromosome 35
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 0 1 0 0 1 0 0 0 1 1 0 0 0 0 1 1 1 1 0 0 1 0 1 1 1 0 0 0 0 0 0 0 1
+ 0 1 1 0 1 1 0 0 1 0 1 1 0 1 1 0 0 0 1 0 0 1 0 1 1 1 1 1 1 1 0 0 0 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 14]
+Generation 6
+Length of Chromosome 37
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 1 0 0 1 0 0 1 1 0 1 1 1 0 0 0 0 1 0 1 1 0 0 0 1 0 1 0 1 1 0 0 0 0 0 0
+ 1 0 1 0 1 1 0 0 1 0 1 0 0 1 1 1 1 0 1 0 1 0 0 1 1 1 1 1 0 0 1 0 0 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [11, 10, 16]
+Generation 7
+Length of Chromosome 31
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 1 0 0 1 0 0 1 1 0 1 0 1 0 0 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1 0 0 0 1 0 0
+ 1 0 1 0 1 1 0 0 0 0 0 0 0 1 0 1 1 0 1 0 1 0 0 1 1 1 1 1 0 0 1 0 0 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 7, 14]
+Generation 8
+Length of Chromosome 34
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 1 0 0 1 0 0 0 1 0 1 1 0 0 0 0 0 1 0 1 1 0 0 1 0 1 1 0 1 1 0 0 0 0 1 0
+ 0 0 0 0 1 0 0 0 1 0 1 0 1 1 1 0 1 0 1 1 1 0 0 1 0 1 1 1 0 0 1 0 1 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 9, 15]
+Generation 9
+Length of Chromosome 33
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 0 0 0 1 0 0 1 1 0 1 1 0 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 1 0 0 0 1 1 0
+ 0 0 1 0 1 1 0 0 1 0 0 0 0 1 1 0 1 0 0 1 1 0 0 1 1 1 1 1 0 0 1 0 1 1 1 0 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 8, 15]
+Generation 10
+Length of Chromosome 33
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 0 0 1 0 1 1 0 0 1 1 0 1 0 0 0 0 0 0 1 0 0
+ 0 0 1 0 0 0 0 0 1 0 1 0 1 1 1 0 1 0 1 1 1 0 0 1 1 1 1 0 0 0 1 0 1 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 7, 16]
+
+EXP8:
+pop_size = 10
+num_generations = 20
+cross_rate = 0.8
+mutation_rate = 0.2
+len_factor = 0.1
+Selection -> dual top3, len_factor = 0.1
+
+Generation 1
+Length of Chromosome 38
+Average Length of the population 37.9
+Best validation accuracy 42.105262756347656
+Corresponding chromosome [0 1 1 0 1 1 0 0 0 0 1 0 0 0 1 1 0 1 1 1 1 0 1 1 0 0 1 1 0 1 0 0 1 0 1 0 0
+ 0 0 1 1 1 1 1 1 1 0 1 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1 1 0 1 0 1 1 1 0 0 1
+ 1]
+[alpha, beta, gamma] contribution: [13, 14, 11]
+Generation 2
+Length of Chromosome 36
+Average Length of the population 36.3
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 1 1 0 0 0 0 1 1 1 0 0 0 0 1 1 0 1 1 0 1 1 0 1 1 0 1 1 0 0 1 1 0 0 1
+ 1 0 0 0 0 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 0 0 1 1 0 1 0 0 1 1 0 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [13, 13, 10]
+Generation 3
+Length of Chromosome 34
+Average Length of the population 36.5
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 1 1 0 0 1 0 0 1 1 1 0 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 0 1 1 0 0 1
+ 1 0 0 0 0 0 1 1 1 0 1 0 1 0 1 0 0 0 1 0 0 1 1 1 0 1 0 0 1 1 0 0 1 0 1 1 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 13]
+Generation 4
+Length of Chromosome 31
+Average Length of the population 36.5
+Best validation accuracy 52.6315803527832
+Corresponding chromosome [1 0 0 0 1 0 0 1 0 0 1 1 0 1 0 0 1 0 0 0 0 1 1 0 0 1 0 0 0 0 1 0 1 1 0 0 1
+ 1 0 0 0 0 0 1 1 0 0 0 0 1 0 1 1 1 1 1 1 0 1 1 0 0 0 0 0 0 1 0 0 0 0 1 1 1
+ 1]
+[alpha, beta, gamma] contribution: [9, 9, 13]
+Generation 5
+Length of Chromosome 28
+Average Length of the population 34.7
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 1 0 0 0 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 1 1 0 0 1 1 0 1 0
+ 0 1 1 0 1 0 1 1 1 0 0 0 1 0 0 0 0 0 1 0 1 0 0 0 0 1 1 0 1 0 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [5, 13, 10]
+Generation 6
+Length of Chromosome 33
+Average Length of the population 33.8
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 1 1 0 1 1 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 0 1 1 1 0 0 1 0 0 1 1 0 0 1
+ 0 1 0 1 0 0 1 1 0 0 0 0 1 0 0 0 1 1 1 1 0 1 1 1 0 1 0 0 0 1 0 0 0 0 1 0 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 12]
+Generation 7
+Length of Chromosome 30
+Average Length of the population 32.8
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 1 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 0 1 0 0 1
+ 1 1 0 1 1 0 1 1 0 1 0 0 1 0 1 0 1 1 1 1 0 0 1 0 0 1 0 0 0 1 1 1 0 1 1 0 0
+ 1]
+[alpha, beta, gamma] contribution: [4, 13, 13]
+Generation 8
+Length of Chromosome 33
+Average Length of the population 34.9
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 1 1 0 0 0 0 1 1 1 0 0 0 1 1 0 0 0 0 0 0 0 0 1 0 0 1 0 1 0 0 1 1 0 1
+ 1 0 0 1 1 0 0 1 1 1 0 0 1 0 1 0 1 1 1 1 0 0 1 0 0 1 0 0 0 0 1 1 0 1 1 0 0
+ 1]
+[alpha, beta, gamma] contribution: [8, 13, 12]
+Generation 9
+Length of Chromosome 37
+Average Length of the population 37.2
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 0 0 0 1 0 1 1 0 1 0 0 0 1 0 0 0 1 1 1 1 0 0 1 0 0 0 1 1 0 0 0 0 0 1
+ 1 1 0 0 0 1 0 1 1 1 0 0 0 0 1 0 1 1 1 1 0 1 1 0 1 1 1 1 0 1 0 1 1 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 10, 17]
+Generation 10
+Length of Chromosome 33
+Average Length of the population 35.5
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 1 1 0 0 0 0 0 1 0 1 1 1 0 1 1 0 0 0 0 0 0 0 1 1 0 0 0 1 1 1 1 1 0 0 1
+ 1 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 1 1 1 1 0 0 1 1 0 1 0 0 0 0 1 0 0 0 1 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 12]
+Generation 11
+Length of Chromosome 36
+Average Length of the population 34.6
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 0 1 0 1 0 0 0 1 1 1 1 1 0 1 1 0 0 0 1 0 0 1 1 1 0 0 0 0 1 1 1 0 0 0 1
+ 1 0 0 0 0 0 0 1 0 0 0 1 0 0 1 0 1 1 1 1 0 1 1 1 0 1 0 0 0 1 1 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [14, 8, 14]
+Generation 12
+Length of Chromosome 38
+Average Length of the population 35.6
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 1 1 0 1 1 0 0 1 1 1 1 0 0 0 1 1 1 0 1 0 0 1 1 0 1 0 0 0 1 1 0 0 0 0 0 0
+ 1 1 0 0 0 0 1 1 1 0 1 1 0 0 1 0 1 1 0 1 0 1 1 0 0 1 0 0 0 1 1 0 0 1 1 1 0
+ 1]
+[alpha, beta, gamma] contribution: [15, 10, 13]
+Generation 13
+Length of Chromosome 34
+Average Length of the population 35.8
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 1 1 1 1 1 0 1 0 1 0 1 0 0 0 0 0 1 0 1 0 0 0 0 0 1 1 1 0 0 0 0 1 1 0 0 0
+ 0 1 1 0 1 1 1 0 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 1 1 0
+ 0]
+[alpha, beta, gamma] contribution: [11, 14, 9]
+Generation 14
+Length of Chromosome 34
+Average Length of the population 35.3
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 1 0 1 1 0 0 0 0 0 1 0 0 0 0 1 1 0 1 1 0 0 0 0 0 0 0 1 1 0 1 1 0 0 1 0 0 1 1 1 0 1 1 1 0 1 0 0 1 0 1 0 1 0 1 1 0 0 0 1 1 1 0 0 1 0 0 1 0 0 1 0 1 1 1]
+[alpha, beta, gamma] contribution: [8, 13, 13]
+Generation 15
+Length of Chromosome 32
+Average Length of the population 34.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 1 0 0 0 0 0 0 1 0 1 1 0 0 1 1 0 1 0 0 1 0 0 0 0 1 1 1 1 1 0 1 0 1 0 0 1 0 1 0 0 0 0 0 1 0 1 0 0 1 0 0 0 1 0 0 1 0 1 0 1 1 1 1 0 1 0 1 0 1 0 1 1 0]
+[alpha, beta, gamma] contribution: [8, 11, 13]
+Generation 16
+Length of Chromosome 29
+Average Length of the population 34.5
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 1 1 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 1 0 0 0 1 0 1 0 0
+ 0 0 1 0 1 0 1 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 1 0 0 0 1 0 1 1 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [11, 8, 10]
+Generation 17
+Length of Chromosome 29
+Average Length of the population 31.2
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 1 0 0 0 0 0 1 0 1 0 0 0 0 1 0 1 1 0 0 0 1 1 0 0 0 1 0 0 1 0 0 1 1 1 0 0
+ 0 0 1 0 0 1 0 1 0 0 1 0 0 1 0 0 0 1 0 0 1 0 1 0 0 1 1 1 0 1 0 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 9, 12]
+Generation 18
+Length of Chromosome 34
+Average Length of the population 33.3
+Best validation accuracy 78.9473648071289
+Corresponding chromosome [1 1 1 0 0 1 1 0 0 1 0 1 0 1 0 0 0 1 0 1 1 1 0 0 0 1 0 1 0 0 0 0 1 1 0 0 0
+ 0 0 1 0 1 1 1 1 1 0 0 0 0 1 0 0 1 0 0 0 0 1 0 0 0 1 1 0 0 1 0 1 1 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [12, 10, 12]
+Generation 19
+Length of Chromosome 42
+Average Length of the population 32.5
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [1 1 1 0 0 1 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 1 0 0 1 0 1 1 0 0 0 0 0 1 0 0 1
+ 1 0 1 0 1 0 1 1 1 0 1 0 0 1 0 0 1 0 0 1 0 1 1 0 0 1 1 1 0 1 0 1 1 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [17, 11, 14]
+Generation 20
+Length of Chromosome 40
+Average Length of the population 37.3
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 1 0 0 0 1 0 0 0 1 1 1 1 1 0 1 1 1 0 1 1 1 0 0 1 0 0 1 1 0 0 0 0 1 0 0 1
+ 1 0 1 0 1 1 1 1 1 0 1 0 1 1 0 0 0 1 1 0 0 0 1 0 1 1 1 1 0 1 0 1 1 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [15, 13, 12]
+
+
+EXP9:
+pop_size = 10
+num_generations = 20
+cross_rate = 0.8
+mutation_rate = 0.05
+len_factor = 0.1
+Selection -> dual top3, len_factor = 0.1
+
+Generation 1
+Length of Chromosome 33
+Average Length of the population 39.4
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1
+ 1 0 1 0 0 1 1 1 0 0 1 1 0 0 0 1 0 1 0 0 1 0 1 1 0 0 1 1 0 1 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 12, 13]
+Generation 2
+Length of Chromosome 36
+Average Length of the population 35.7
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 0 1 0 0 0 1 0 1 0 1 0 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1
+ 1 0 1 0 0 1 1 1 1 0 1 1 0 1 0 1 0 1 0 0 1 0 1 1 0 0 1 1 0 1 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [9, 13, 14]
+Generation 3
+Length of Chromosome 36
+Average Length of the population 34.8
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0 1 0 0 0 1 0 1 0 0 1 0 1
+ 1 0 1 0 0 1 1 1 1 0 1 1 0 1 0 1 0 1 0 0 1 0 1 1 0 1 1 1 0 1 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 13, 15]
+Generation 4
+Length of Chromosome 36
+Average Length of the population 34.6
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 1 0 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 1 0 1 0 1 1 1 0 1 1 0 1
+ 1 0 0 0 1 1 1 1 1 0 1 1 0 0 1 0 0 0 0 0 1 0 1 1 1 1 1 1 0 1 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [6, 16, 14]
+Generation 5
+Length of Chromosome 31
+Average Length of the population 33.3
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [1 0 0 0 0 1 0 0 0 1 0 1 0 0 0 1 0 0 1 0 0 0 0 1 1 1 0 0 0 1 0 0 0 0 1 0 1
+ 1 0 1 0 0 0 1 1 1 0 1 1 0 1 0 1 0 1 0 0 0 0 1 1 0 0 1 0 0 1 1 1 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 11, 12]
+Generation 6
+Length of Chromosome 34
+Average Length of the population 33.4
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 0 0 0 1 1 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 1 1 0 1 0 1 1 0 0 0 0 0 1
+ 1 0 0 0 1 0 1 1 1 1 1 1 0 1 0 0 0 1 0 0 0 0 1 1 0 1 1 1 0 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 13, 13]
+Generation 7
+Length of Chromosome 33
+Average Length of the population 32.9
+Best validation accuracy 73.68421173095703
+Corresponding chromosome [0 0 0 0 0 1 1 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 1 1 0 1 0 1 1 0 0 0 0 0 1
+ 1 0 0 1 1 0 1 1 1 1 1 1 0 1 0 0 0 1 0 0 0 0 1 0 0 1 1 1 0 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [7, 14, 12]
+Generation 8
+Length of Chromosome 31
+Average Length of the population 34.1
+Best validation accuracy 57.894737243652344
+Corresponding chromosome [1 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 0 0 1 1 0 0 1 0 1 0 0 0 0 1 0 1
+ 1 1 1 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 1 0 0 0 1 1 0 1 1 0 0 0 1 0 0 1 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [5, 15, 11]
+Generation 9
+Length of Chromosome 34
+Average Length of the population 30.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 1 1 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 1 0 1 0 1 0 1 0 0 0 0 0 1 1
+ 0 0 1 0 1 1 1 1 1 0 1 1 0 1 0 0 0 1 1 0 0 0 1 1 1 1 1 1 0 0 1 1 0 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [6, 13, 15]
+Generation 10
+Length of Chromosome 31
+Average Length of the population 32.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [1 0 0 0 1 0 1 0 0 1 0 1 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1 0 1 0 0 0 0 0 1 1
+ 0 1 1 0 1 1 1 1 1 0 1 1 0 1 0 0 0 0 0 0 0 1 1 1 1 0 1 0 0 0 1 1 0 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [8, 13, 10]
+Generation 11
+Length of Chromosome 30
+Average Length of the population 32.1
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 0 0 1 1 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1
+ 1 1 0 0 1 1 1 1 1 0 1 1 0 1 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 0 1 1 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [5, 12, 13]
+Generation 12
+Length of Chromosome 30
+Average Length of the population 29.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1
+ 1 1 0 0 1 1 1 0 1 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [6, 11, 13]
+Generation 13
+Length of Chromosome 31
+Average Length of the population 30.7
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 0 0 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 1
+ 1 1 0 1 0 1 1 1 1 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1 1 0 1 0 1 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [6, 12, 13]
+Generation 14
+Length of Chromosome 29
+Average Length of the population 28.5
+Best validation accuracy 63.157894134521484
+Corresponding chromosome [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 1 1 1
+ 1 1 0 1 1 1 1 1 1 0 1 1 0 1 0 0 1 0 0 0 1 1 0 1 0 0 1 0 0 0 1 0 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [4, 15, 10]
+Generation 15
+Length of Chromosome 28
+Average Length of the population 27.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 1
+ 0 1 0 1 1 1 1 1 1 0 1 1 0 0 0 0 1 0 0 0 0 1 0 1 1 1 0 1 1 1 1 1 1 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [3, 13, 12]
+Generation 16
+Length of Chromosome 28
+Average Length of the population 26.0
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 1 0 0 0 0 1 0 1 0 0 0 1 1 0 0 0 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 1 1
+ 1 0 0 0 1 1 1 1 1 0 1 1 0 1 0 0 1 0 0 0 0 0 1 1 1 0 0 0 0 1 0 0 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [7, 12, 9]
+Generation 17
+Length of Chromosome 26
+Average Length of the population 27.9
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 1 1
+ 0 1 0 1 1 1 1 0 1 0 0 1 1 0 0 0 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [3, 12, 11]
+Generation 18
+Length of Chromosome 26
+Average Length of the population 27.7
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 0 0 0 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 1 1
+ 0 1 0 1 1 1 1 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 1 1 0 0 1 0 0 0 1 1 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [3, 11, 12]
+Generation 19
+Length of Chromosome 29
+Average Length of the population 28.5
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 1 1 0 0 0 0 0 0 0 1 0 0 0 0 1 0 1 0 1 0 1 1
+ 1 0 0 0 1 1 1 1 1 0 1 1 1 1 0 0 1 1 0 0 0 0 1 1 1 0 0 0 0 1 0 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [5, 14, 10]
+Generation 20
+Length of Chromosome 28
+Average Length of the population 30.6
+Best validation accuracy 68.42105102539062
+Corresponding chromosome [0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 0 1 0 1 0 1 1
+ 1 0 0 0 1 1 1 1 1 0 0 1 1 1 0 1 1 1 0 0 0 0 1 1 1 0 0 0 0 1 0 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [4, 13, 11]
+
+
+EXP10
+pop_size = 10
+num_generations = 20
+cross_rate = 0.8
+mutation_rate = 0.1
+len_factor = 2
+Selection -> probability, len_factor = 0.1
+
+Generation 1
+Length of Chromosome 36
+Average Length of the population 37.1
+Best validation accuracy 57.894737243652344
+Variance in the accuracy 51.24653792447352
+Accuracy list [42.105262756347656, 31.578947067260742, 42.105262756347656, 42.105262756347656, 31.578947067260742, 36.842105865478516, 57.894737243652344, 36.842105865478516, 36.842105865478516, 36.842105865478516]
+Corresponding chromosome [0 0 1 0 1 0 1 0 1 1 0 0 1 0 0 0 1 1 1 0 1 0 0 1 1 1 1 1 1 1 0 0 1 0 1 0 0
+ 1 1 1 0 0 1 1 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 0 1 0 1 1 0 1 0 0 1 1 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [12, 14, 10]
+Generation 2
+Length of Chromosome 36
+Average Length of the population 40.4
+Best validation accuracy 63.157894134521484
+Variance in the accuracy 72.29916307866822
+Accuracy list [52.6315803527832, 36.842105865478516, 47.3684196472168, 63.157894134521484, 36.842105865478516, 47.3684196472168, 42.105262756347656, 36.842105865478516, 36.842105865478516, 36.842105865478516]
+Corresponding chromosome [0 0 1 0 1 0 0 0 1 1 0 0 1 0 0 0 1 1 1 0 1 0 0 0 1 0 1 1 1 1 0 1 1 0 0 1 0
+ 1 1 1 0 0 1 1 0 0 0 1 0 1 0 1 0 0 0 0 0 1 0 1 0 1 1 1 1 0 1 0 1 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 14, 12]
+Generation 3
+Length of Chromosome 43
+Average Length of the population 39.4
+Best validation accuracy 47.3684196472168
+Variance in the accuracy 48.75345324149151
+Accuracy list [47.3684196472168, 42.105262756347656, 31.578947067260742, 47.3684196472168, 47.3684196472168, 42.105262756347656, 42.105262756347656, 26.3157901763916, 47.3684196472168, 36.842105865478516]
+Corresponding chromosome [0 0 1 1 1 1 1 1 1 1 1 0 0 0 1 1 1 1 0 1 0 1 0 0 0 1 0 1 1 1 0 0 1 0 1 0 1
+ 0 1 1 1 0 0 1 1 0 0 1 1 0 1 1 1 1 1 0 0 1 1 0 0 1 0 0 1 1 1 1 0 0 1 1 0 0
+ 0]
+[alpha, beta, gamma] contribution: [15, 14, 14]
+Generation 4
+Length of Chromosome 34
+Average Length of the population 38.1
+Best validation accuracy 42.105262756347656
+Variance in the accuracy 30.19390293237597
+Accuracy list [42.105262756347656, 42.105262756347656, 31.578947067260742, 31.578947067260742, 36.842105865478516, 42.105262756347656, 42.105262756347656, 26.3157901763916, 36.842105865478516, 42.105262756347656]
+Corresponding chromosome [0 0 1 0 1 1 1 0 1 1 0 0 0 0 1 1 1 1 0 1 0 1 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0
+ 1 0 1 0 0 0 0 1 0 1 0 1 0 1 0 0 0 1 0 0 1 1 1 0 1 0 1 1 1 0 1 0 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [14, 9, 11]
+Generation 5
+Length of Chromosome 37
+Average Length of the population 38.8
+Best validation accuracy 52.6315803527832
+Variance in the accuracy 56.50969461456949
+Accuracy list [36.842105865478516, 26.3157901763916, 31.578947067260742, 42.105262756347656, 31.578947067260742, 42.105262756347656, 36.842105865478516, 52.6315803527832, 47.3684196472168, 42.105262756347656]
+Corresponding chromosome [1 1 1 1 1 1 1 0 1 0 1 1 0 0 1 1 1 1 1 1 1 1 0 1 0 0 0 1 0 0 0 0 1 1 0 0 1
+ 1 0 0 0 0 1 1 1 1 1 1 0 0 1 0 1 1 0 0 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0
+ 0]
+[alpha, beta, gamma] contribution: [19, 11, 7]
+Generation 6
+Length of Chromosome 33
+Average Length of the population 38.8
+Best validation accuracy 47.3684196472168
+Variance in the accuracy 40.16619869876817
+Accuracy list [31.578947067260742, 42.105262756347656, 31.578947067260742, 42.105262756347656, 36.842105865478516, 36.842105865478516, 47.3684196472168, 47.3684196472168, 47.3684196472168, 31.578947067260742]
+Corresponding chromosome [1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 0 1 0 0 1 1 1 0 0 1 0 1 0 0 0 0 1 0 0 1 0 1
+ 0 0 1 1 0 1 0 1 0 0 1 1 0 1 0 0 0 0 0 0 1 1 0 0 0 1 0 1 0 1 0 0 0 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [16, 10, 7]
+Generation 7
+Length of Chromosome 38
+Average Length of the population 37.3
+Best validation accuracy 52.6315803527832
+Variance in the accuracy 46.81440725353026
+Accuracy list [36.842105865478516, 52.6315803527832, 52.6315803527832, 47.3684196472168, 42.105262756347656, 36.842105865478516, 42.105262756347656, 31.578947067260742, 36.842105865478516, 36.842105865478516]
+Corresponding chromosome [1 0 0 1 1 0 1 0 1 1 0 1 1 0 1 0 1 0 0 0 1 1 1 0 1 0 0 0 0 1 0 0 0 0 1 1 1
+ 0 0 1 1 1 1 1 1 0 0 1 1 0 0 0 1 1 1 0 0 1 0 0 0 1 0 1 1 1 1 0 1 0 1 1 0 0
+ 0]
+[alpha, beta, gamma] contribution: [14, 12, 12]
+Generation 8
+Length of Chromosome 41
+Average Length of the population 36.7
+Best validation accuracy 47.3684196472168
+Variance in the accuracy 12.18836100147746
+Accuracy list [42.105262756347656, 47.3684196472168, 47.3684196472168, 47.3684196472168, 47.3684196472168, 42.105262756347656, 42.105262756347656, 42.105262756347656, 36.842105865478516, 47.3684196472168]
+Corresponding chromosome [1 1 1 1 1 1 1 0 0 1 1 1 0 0 0 0 1 0 1 1 0 0 0 1 1 0 0 1 1 1 0 1 0 0 1 0 1
+ 1 0 1 1 0 1 1 1 0 1 0 1 0 1 1 1 1 1 0 1 0 0 0 0 0 0 1 0 1 1 0 1 1 0 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [15, 14, 12]
+Generation 9
+Length of Chromosome 38
+Average Length of the population 34.7
+Best validation accuracy 47.3684196472168
+Variance in the accuracy 39.05816407349033
+Accuracy list [42.105262756347656, 36.842105865478516, 47.3684196472168, 42.105262756347656, 36.842105865478516, 47.3684196472168, 36.842105865478516, 36.842105865478516, 26.3157901763916, 31.578947067260742]
+Corresponding chromosome [1 1 1 1 1 1 1 0 0 0 1 1 0 1 1 1 0 1 1 0 0 0 0 1 1 0 0 0 0 1 0 0 0 0 1 1 1
+ 0 0 1 0 1 1 1 1 0 1 0 0 0 1 0 1 1 1 0 0 0 0 0 0 0 1 1 0 1 0 1 1 1 1 1 0 0
+ 0]
+[alpha, beta, gamma] contribution: [16, 10, 12]
+Generation 10
+Length of Chromosome 30
+Average Length of the population 34.6
+Best validation accuracy 47.3684196472168
+Variance in the accuracy 41.274233524819465
+Accuracy list [31.578947067260742, 47.3684196472168, 42.105262756347656, 26.3157901763916, 42.105262756347656, 36.842105865478516, 31.578947067260742, 42.105262756347656, 31.578947067260742, 31.578947067260742]
+Corresponding chromosome [1 1 1 1 0 0 0 0 1 1 0 1 0 0 1 0 1 0 1 0 0 0 0 0 1 0 0 0 0 1 0 1 0 0 1 0 0
+ 0 0 1 0 1 0 1 1 0 1 0 0 1 0 0 1 0 0 0 0 0 1 1 0 0 0 0 1 1 1 1 0 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [11, 9, 10]
+
+
+EXP10
+pop_size = 10
+num_generations = 20
+cross_rate = 0.8
+mutation_rate = 0.1
+len_factor = 1
+Selection -> probability
+
+Generation 1
+Length of Chromosome 41
+Average Length of the population 38.6
+Best validation accuracy 52.6315803527832
+Variance in the accuracy 39.05816828973508
+Probabilistic fitness [9.88561650e-02 1.55228723e-07 1.55228723e-07 1.91993399e-01
+ 1.37254880e-01 1.63398033e-03 5.22875481e-02 1.80555537e-01
+ 1.29901910e-01 2.07516271e-01]
+Corresponding chromosome [1 1 1 1 1 0 0 1 1 1 1 1 0 0 0 0 1 1 1 0 0 1 0 0 1 0 1 1 1 0 1 1 0 0 1 1 0
+ 0 0 1 1 1 0 0 1 1 1 1 1 0 0 1 0 0 1 1 1 0 1 0 0 0 1 0 1 0 0 1 0 0 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [15, 15, 11]
+Generation 2
+Length of Chromosome 36
+Average Length of the population 33.5
+Best validation accuracy 57.894737243652344
+Variance in the accuracy 100.831027424567
+Probabilistic fitness [0.15036855 0.0054054  0.20442261 0.20442261 0.195086   0.03144962
+ 0.03341523 0.09434889 0.03587224 0.04520885]
+Corresponding chromosome [0 1 0 1 1 0 1 1 1 1 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 1 0 0 1 1 1 1 0 1 1 0 0
+ 0 1 1 1 1 1 0 0 1 0 1 0 0 1 1 1 1 1 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [13, 14, 9]
+Generation 3
+Length of Chromosome 35
+Average Length of the population 32.1
+Best validation accuracy 63.157894134521484
+Variance in the accuracy 33.51800720975749
+Probabilistic fitness [0.10806951 0.08545584 0.10687932 0.12044752 0.12735063 0.08307545
+ 0.09902404 0.11259224 0.07974292 0.07736253]
+Corresponding chromosome [0 0 0 1 0 0 1 0 0 1 1 1 0 1 0 0 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 1 0 0 1 0
+ 0 1 1 1 1 0 0 0 0 0 1 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 1 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 12, 13]
+Generation 4
+Length of Chromosome 40
+Average Length of the population 33.7
+Best validation accuracy 68.42105102539062
+Variance in the accuracy 122.160662590302
+Probabilistic fitness [1.58823518e-01 1.74117641e-01 4.67646974e-02 2.29411739e-02
+ 1.08235285e-01 1.13823520e-01 5.58823521e-08 1.68529406e-01
+ 1.27941177e-01 7.88235260e-02]
+Corresponding chromosome [0 0 0 1 0 1 0 0 0 1 0 0 1 1 1 1 0 1 1 1 1 0 0 0 1 1 1 0 1 1 1 0 1 0 1 1 0
+ 1 1 0 1 1 0 0 1 1 0 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 1 1 1 0 0 1 0 1 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [12, 15, 13]
+Generation 5
+Length of Chromosome 39
+Average Length of the population 31.2
+Best validation accuracy 63.157894134521484
+Variance in the accuracy 73.13019893572378
+Probabilistic fitness [0.1171024  0.125      0.08605665 0.14433551 0.17020697 0.02641612
+ 0.11192811 0.07952069 0.11056644 0.0288671 ]
+Corresponding chromosome [0 1 1 1 0 1 0 0 0 1 0 0 1 1 1 1 0 1 1 1 1 0 0 0 1 1 1 0 1 1 1 0 1 0 1 1 0
+ 0 1 0 1 1 0 0 1 1 0 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 1 1 1 0 0 1 0 1 1 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [14, 14, 11]
+Generation 6
+Length of Chromosome 38
+Average Length of the population 34.2
+Best validation accuracy 73.68421173095703
+Variance in the accuracy 95.56787876541333
+Probabilistic fitness [0.06395736 0.07661559 0.22584945 0.10992671 0.0592938  0.11625582
+ 0.15756163 0.04497002 0.02598268 0.11958695]
+Corresponding chromosome [0 1 1 1 0 1 0 0 0 1 0 0 1 1 1 1 1 1 1 1 1 0 0 0 1 0 0 0 1 1 1 1 1 0 1 1 0
+ 0 0 0 0 1 1 0 1 1 0 0 1 0 1 0 0 0 1 0 0 0 0 1 1 0 1 1 1 0 0 1 0 1 1 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [15, 12, 11]
+Generation 7
+Length of Chromosome 38
+Average Length of the population 34.3
+Best validation accuracy 57.894737243652344
+Variance in the accuracy 33.51801363451072
+Probabilistic fitness [0.07382971 0.06628966 0.1187559  0.08576814 0.06189129 0.11278669
+ 0.09173735 0.12472511 0.15457117 0.10964498]
+Corresponding chromosome [0 0 0 1 1 0 1 1 0 0 0 1 1 0 1 1 0 1 0 0 1 0 1 0 0 0 1 0 0 1 0 1 0 1 1 0 0
+ 1 0 0 0 1 1 0 1 1 0 1 0 1 1 1 0 1 0 0 1 1 0 1 1 0 1 1 1 0 1 1 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 12, 15]
+Generation 8
+Length of Chromosome 29
+Average Length of the population 32.8
+Best validation accuracy 68.42105102539062
+Variance in the accuracy 113.29639402056816
+Probabilistic fitness [1.18978314e-01 8.98803722e-02 8.66472545e-02 5.75492889e-02
+ 1.26737787e-01 6.14290255e-08 6.14290255e-08 1.39023593e-01
+ 1.39023593e-01 2.42159675e-01]
+Corresponding chromosome [1 0 1 1 0 1 0 0 0 0 1 0 1 1 0 1 0 0 1 0 1 0 0 0 0 0 1 1 0 1 0 1 0 1 0 1 0
+ 0 1 0 1 1 0 1 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 1 1 1 0 0 1 0 0 0 1 0 0 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [10, 11, 8]
+Generation 9
+Length of Chromosome 31
+Average Length of the population 30.8
+Best validation accuracy 57.894737243652344
+Variance in the accuracy 46.81440906049233
+Probabilistic fitness [0.0591133  0.12653942 0.17333745 0.04156404 0.15732759 0.04895319
+ 0.09575122 0.02832513 0.06496305 0.20412562]
+Corresponding chromosome [0 1 0 1 1 0 1 0 0 0 0 1 0 1 0 1 1 0 1 1 1 1 1 0 1 0 1 0 1 1 0 0 1 0 1 0 0
+ 0 1 1 0 0 0 0 0 0 0 1 0 0 1 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 1 0 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [14, 8, 9]
+Generation 10
+Length of Chromosome 26
+Average Length of the population 29.3
+Best validation accuracy 68.42105102539062
+Variance in the accuracy 188.3656413535342
+Probabilistic fitness [5.40694288e-08 8.30961672e-02 5.40694288e-08 9.93169959e-02
+ 2.29368200e-01 5.40694288e-08 1.27774605e-01 5.86226471e-02
+ 2.34775143e-01 1.67046080e-01]
+Corresponding chromosome [1 0 0 1 1 0 0 0 0 0 1 0 1 0 0 1 1 0 1 0 1 1 0 0 0 0 0 0 1 1 0 1 0 1 0 1 0
+ 0 0 0 1 1 0 1 0 0 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 1 0 0 1 0 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [10, 8, 8]
+
+
+EXP
+# hyper parameters for the genetic algorithm
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.1
+len_factor = 1
+Select top 3
+/Users/siddharthsachan/opt/anaconda3/envs/deepNN/bin/python /Users/siddharthsachan/Desktop/music_effect_2/main.py
+Generation 1
+Length of Chromosome 35
+Average Length of the population 36.6
+Best validation accuracy 63.157894134521484
+Mean Validation accuracy 42.63157844543457
+Variance in the accuracy 91.13572540705937
+Corresponding chromosome [1 1 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1 0
+ 0 1 1 1 1 0 1 0 1 0 1 1 0 1 1 1 1 0 1 0 0 0 0 1 1 1 0 0 1 1 1 1 1 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 12, 14]
+Generation 2
+Length of Chromosome 35
+Average Length of the population 34.8
+Best validation accuracy 57.894737243652344
+Mean Validation accuracy 44.21052589416504
+Variance in the accuracy 34.34902780802353
+Corresponding chromosome [1 1 1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 1 1 0 0 0 0 1 0
+ 0 1 1 1 1 0 1 0 1 0 1 1 0 1 1 0 1 0 1 0 0 0 0 1 1 1 0 0 1 1 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [11, 12, 12]
+Generation 3
+Length of Chromosome 34
+Average Length of the population 35.0
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 50.526315689086914
+Variance in the accuracy 89.75069040737071
+Corresponding chromosome [1 0 1 0 0 0 1 0 0 1 0 1 1 0 0 0 0 1 1 0 0 1 0 0 1 0 0 1 0 1 1 0 1 0 0 1 0
+ 0 1 1 1 1 0 1 0 1 0 1 0 0 1 1 0 1 0 1 0 0 0 0 1 1 1 0 0 1 1 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [10, 12, 12]
+Generation 4
+Length of Chromosome 37
+Average Length of the population 33.8
+Best validation accuracy 78.9473648071289
+Mean Validation accuracy 61.57894630432129
+Variance in the accuracy 127.70080399447484
+Corresponding chromosome [1 1 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 1 1 0 0 0 0 0 1 1 0 1 1 1 0 0 1 0 1 0 1
+ 0 1 1 1 1 0 1 1 1 0 1 0 0 0 1 0 1 0 1 1 1 0 1 1 1 0 1 0 0 1 1 0 1 1 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [9, 15, 13]
+Generation 5
+Length of Chromosome 29
+Average Length of the population 34.0
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 59.47368392944336
+Variance in the accuracy 33.51800198964542
+Corresponding chromosome [1 1 1 1 0 0 0 0 0 1 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 1 0 0 1 0 0 0 0 0 0
+ 0 1 0 1 1 0 1 0 0 0 1 0 0 1 1 0 1 1 1 0 1 0 1 1 1 0 0 0 1 1 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [8, 7, 14]
+Generation 6
+Length of Chromosome 36
+Average Length of the population 33.6
+Best validation accuracy 73.68421173095703
+Mean Validation accuracy 64.21052589416504
+Variance in the accuracy 32.132958959015234
+Corresponding chromosome [1 1 0 1 0 0 1 0 1 0 1 0 1 0 0 0 1 1 1 0 0 1 0 0 0 0 0 1 0 1 0 0 1 0 0 1 0
+ 0 1 0 1 1 1 1 0 1 0 1 0 0 1 1 1 0 0 1 0 1 0 1 1 1 0 1 0 0 1 1 1 1 0 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [11, 11, 14]
+Generation 7
+Length of Chromosome 34
+Average Length of the population 33.9
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 56.84210472106933
+Variance in the accuracy 76.45429016282448
+Corresponding chromosome [1 1 0 1 1 0 0 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 0 1 1 1 1 0 0 0 0
+ 1 1 1 1 1 0 1 0 0 0 1 0 0 1 1 0 0 1 1 0 0 0 1 1 1 0 0 1 1 1 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [8, 13, 13]
+Generation 8
+Length of Chromosome 36
+Average Length of the population 34.4
+Best validation accuracy 73.68421173095703
+Mean Validation accuracy 62.10526313781738
+Variance in the accuracy 48.75345283994524
+Corresponding chromosome [1 1 0 1 0 0 1 0 0 1 1 0 1 0 0 0 0 0 0 0 0 0 1 0 0 1 1 1 1 1 1 0 1 0 0 0 0
+ 1 1 1 1 1 0 1 0 0 0 1 1 0 1 1 0 0 1 1 0 1 0 1 1 1 1 0 0 0 1 1 0 1 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [8, 15, 13]
+Generation 9
+Length of Chromosome 34
+Average Length of the population 36.0
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 58.94736785888672
+Variance in the accuracy 87.53461834598508
+Corresponding chromosome [1 1 0 0 0 1 1 0 0 1 1 0 1 0 0 0 0 0 1 0 0 0 1 0 0 0 1 0 0 1 1 1 1 0 0 0 0
+ 1 0 1 1 0 0 0 1 1 0 1 0 0 1 1 0 1 1 1 0 0 0 1 0 1 0 0 0 1 1 1 1 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [9, 11, 14]
+Generation 10
+Length of Chromosome 37
+Average Length of the population 37.0
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 56.842105102539065
+Variance in the accuracy 81.99445104202837
+Corresponding chromosome [0 1 1 1 0 0 1 0 0 1 1 0 0 1 0 0 1 0 0 1 0 0 0 0 0 1 1 0 1 1 0 1 1 0 0 1 0
+ 1 1 1 1 1 1 0 0 0 0 1 1 0 1 0 0 0 1 1 1 1 0 1 0 1 0 0 0 1 1 1 1 1 0 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [9, 15, 13]
+
+Process finished with exit code 0
+
+
+
+EXP
+# hyper parameters for the genetic algorithm
+pop_size = 10
+num_generations = 10
+cross_rate = 0.8
+mutation_rate = 0.2
+len_factor = 1
+Select top 3
+
+Generation 1
+Length of Chromosome 37
+Average Length of the population 37.0
+Best validation accuracy 52.6315803527832
+Mean Validation accuracy 42.10526313781738
+Variance in the accuracy 27.700828488844714
+Corresponding chromosome [0 0 1 0 1 0 1 1 0 1 0 0 1 0 1 0 0 0 1 0 0 0 1 1 0 0 1 0 0 0 1 0 1 1 0 1 1
+ 1 1 1 1 1 0 1 0 0 1 1 1 0 0 1 0 0 0 1 1 1 0 0 1 1 1 0 0 0 1 1 1 0 0 1 1 0
+ 0]
+[alpha, beta, gamma] contribution: [10, 15, 12]
+Generation 2
+Length of Chromosome 36
+Average Length of the population 36.3
+Best validation accuracy 52.6315803527832
+Mean Validation accuracy 43.15789451599121
+Variance in the accuracy 21.052630775853906
+Corresponding chromosome [0 1 0 1 1 0 1 0 1 0 0 1 0 0 1 0 0 1 1 1 0 1 1 1 0 0 0 1 1 0 0 0 0 0 1 1 1
+ 1 0 0 1 1 0 1 0 1 0 0 0 1 0 0 1 1 0 1 0 0 1 1 1 0 1 0 0 1 1 1 1 0 0 0 1 0
+ 0]
+[alpha, beta, gamma] contribution: [13, 11, 12]
+Generation 3
+Length of Chromosome 42
+Average Length of the population 34.2
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 46.842104530334474
+Variance in the accuracy 85.59556191779998
+Corresponding chromosome [1 1 1 1 0 0 1 0 1 0 0 1 1 0 0 0 0 0 1 1 0 1 1 0 0 0 0 1 1 1 0 1 0 0 1 1 1
+ 1 0 1 1 1 1 1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 1 1 1 1 1 0 1 0 1 1 1 1 0 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 14, 16]
+Generation 4
+Length of Chromosome 25
+Average Length of the population 32.6
+Best validation accuracy 57.894737243652344
+Mean Validation accuracy 49.47368392944336
+Variance in the accuracy 39.88920314292248
+Corresponding chromosome [0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 0 1 1 0 1 0 0 1 1 0
+ 1 1 1 0 1 0 1 0 0 0 0 0 0 1 0 0 0 0 0 1 1 1 1 1 0 0 0 1 1 0 1 0 0 0 0 0 0
+ 1]
+[alpha, beta, gamma] contribution: [5, 10, 10]
+Generation 5
+Length of Chromosome 30
+Average Length of the population 30.4
+Best validation accuracy 63.157894134521484
+Mean Validation accuracy 48.42105274200439
+Variance in the accuracy 87.53463119549157
+Corresponding chromosome [0 1 0 1 0 1 1 0 0 1 1 0 0 0 0 1 0 0 1 1 1 0 0 0 0 0 1 1 0 1 0 0 0 1 1 1 0
+ 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 1 0 1 0 1 1 0 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [10, 11, 9]
+Generation 6
+Length of Chromosome 29
+Average Length of the population 32.3
+Best validation accuracy 63.157894134521484
+Mean Validation accuracy 46.842105102539065
+Variance in the accuracy 57.89473603901221
+Corresponding chromosome [0 0 0 1 1 0 0 0 0 0 0 1 1 1 0 1 0 0 0 0 0 0 1 0 1 0 0 1 1 0 0 0 1 1 1 1 0
+ 1 0 1 0 1 0 0 0 1 0 1 0 1 0 0 0 0 1 0 1 0 0 1 1 0 1 0 0 1 0 1 1 1 0 0 0 0
+ 0]
+[alpha, beta, gamma] contribution: [8, 12, 9]
+Generation 7
+Length of Chromosome 29
+Average Length of the population 34.9
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 48.94736824035645
+Variance in the accuracy 116.6204894639128
+Corresponding chromosome [0 0 0 0 1 0 1 0 0 1 0 1 0 0 0 1 0 0 0 0 0 0 0 0 1 0 0 1 1 0 0 0 1 1 1 1 0
+ 1 1 1 1 1 0 0 1 1 0 1 1 1 0 0 0 0 1 0 0 0 0 1 0 0 1 0 1 0 0 0 0 1 0 0 1 0
+ 1]
+[alpha, beta, gamma] contribution: [6, 16, 7]
+Generation 8
+Length of Chromosome 38
+Average Length of the population 37.1
+Best validation accuracy 57.894737243652344
+Mean Validation accuracy 50.52631607055664
+Variance in the accuracy 56.509699433134514
+Corresponding chromosome [0 1 0 0 0 1 1 0 0 1 1 1 1 0 1 1 0 0 1 1 0 0 0 1 0 0 0 1 0 0 1 0 1 1 0 0 1
+ 1 1 0 0 1 0 1 0 0 1 0 1 1 0 0 0 0 1 1 1 0 0 0 1 1 1 1 1 1 0 1 0 1 1 0 1 1
+ 0]
+[alpha, beta, gamma] contribution: [12, 12, 14]
+Generation 9
+Length of Chromosome 36
+Average Length of the population 39.6
+Best validation accuracy 68.42105102539062
+Mean Validation accuracy 52.63157844543457
+Variance in the accuracy 83.10248948200388
+Corresponding chromosome [0 1 0 1 0 1 1 1 0 1 0 1 0 1 0 0 0 1 1 1 1 1 0 0 0 1 0 1 1 0 0 0 1 1 0 1 1
+ 0 0 1 1 1 0 0 0 0 0 1 1 0 0 0 0 0 1 0 0 1 0 1 0 0 1 1 1 0 1 1 0 0 0 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [13, 12, 11]
+Generation 10
+Length of Chromosome 33
+Average Length of the population 37.7
+Best validation accuracy 63.157894134521484
+Mean Validation accuracy 51.57894744873047
+Variance in the accuracy 43.21330079477688
+Corresponding chromosome [0 1 1 0 0 1 1 0 0 1 0 0 0 0 0 0 0 1 1 0 1 1 0 0 0 1 0 1 1 0 0 0 1 1 0 1 1
+ 0 0 0 0 1 1 0 0 0 0 1 1 0 0 1 0 1 0 0 1 1 1 1 1 0 0 0 1 0 1 0 0 0 1 0 1 1
+ 1]
+[alpha, beta, gamma] contribution: [9, 11, 13]

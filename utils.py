@@ -245,3 +245,23 @@ def plot_eval_gen_pruning(train_eval, val_eval, y_l, len_factor):
     save_path = 'Plots/perf_prune_' + y_l + '_' + str(len_factor) + '.png'
     plt.savefig(save_path, dpi=300)
     plt.show()
+
+
+# to plot the mutation rate impact graph
+# the mean accuracy values are copied from the separate log kept during the input feature selection experiments
+def plot_mutation_rate_impact():
+    a = [43.15, 48.94, 54.73, 60, 60, 57.36, 67.37, 65.26, 60.52, 60.52]
+    b = [42.63, 44.21, 50.52, 61.58, 59.47, 64.21, 56.84, 62.11, 58.94, 56.84]
+    c = [42.11, 43.16, 46.82, 49.47, 48.42, 46.82, 48.94, 50.52, 52.63, 51.58]
+    x = np.arange(10)
+    plt.plot(x + 1, np.array(a) / 100, label='Mutation rate = 0.05')
+    plt.plot(x + 1, np.array(b) / 100, label='Mutation rate = 0.1')
+    plt.plot(x + 1, np.array(c) / 100, label='Mutation rate = 0.2')
+    plt.xlabel('Generation')
+    plt.ylabel('Mean validation accuracy')
+    plt.legend()
+    plt.savefig('./Plots/mutation_rate.png', dpi=300)
+    plt.show()
+
+
+# plot_mutation_rate_impact()
