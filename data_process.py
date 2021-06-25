@@ -81,3 +81,33 @@ def split(df, train_frac=0.8, val_frac=0.1):
                                 [int(train_frac * len(df)), int((train_frac + val_frac) * len(df))])
     return train, val, test
 
+
+# Function to split the data into train and validation according to leave one out cross-validation
+# return a list of train and validation sets
+def split_participant_wise(df, num_participants=24, observations_per_participant=8, k=6):
+    train_list = []
+    val_list = []
+    # for i in range(num_participants):
+    #     val_index_list = list(range(i*observations_per_participant, (i+1)*observations_per_participant))
+    #     val_df = df.iloc[val_index_list, :]
+    #     before = list(range(i*observations_per_participant))
+    #     after = list(range((i+1)*observations_per_participant, num_participants*observations_per_participant))
+    #     train_index_list = before+after
+    #     train_df = df.iloc[train_index_list, :]
+    #     train_df = train_df.sample(frac=1)
+    #     train_list.append(train_df)
+    #     val_list.append(val_df)
+    num_participant_per_set = int(num_participants/k)
+    num_observation_per_set = num_participant_per_set * observations_per_participant
+    total_observation = num_participants * observations_per_participant
+    for i in range(k):
+        val_index_list = list(range(i * num_observation_per_set, (i + 1)*num_observation_per_set))
+        val_df = df.iloc[val_index_list, :]
+        before = list(range(i *num_observation_per_set))
+        after = list(range((i + 1) * num_observation_per_set, total_observation))
+        train_index_list = before + after
+        train_df = df.iloc[train_index_list, :]
+        train_df = train_df.sample(frac=1)
+        train_list.append(train_df)
+        val_list.append(val_df)
+    return train_list, val_list

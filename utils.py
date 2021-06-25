@@ -151,7 +151,7 @@ def get_train_val_eval(model, train_loader, val_loader, args, verbose=False):
 
 # function to plot the evaluation measures after pruning
 def plot_all_evals(train_eval, val_eval, num_removed, y_l):
-    x = np.arange(10, 60, 5)
+    x = np.arange(0, 60, 5)
     plt.plot(x, train_eval, label='Training data', marker='o')
     plt.plot(x, val_eval, label='Validation data', marker='*')
 
@@ -217,7 +217,7 @@ def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor):
     x = np.arange(len(best_acc_list))
     fig, ax1 = plt.subplots()
     ax1.set_xlabel('Generation')
-    ax1.set_ylabel('Validation Accuracy')
+    ax1.set_ylabel('Training Accuracy')
     lns1 = ax1.plot(x, best_acc_list, label='Best Accuracy', color='tab:red')
     lns2 = ax1.plot(x, mean_acc_list, label='Mean Accuracy', color='tab:green')
     ax2 = ax1.twinx()
@@ -227,7 +227,7 @@ def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor):
     lns = lns1 + lns2 + lns3
     labs = [l.get_label() for l in lns]
     ax1.legend(lns, labs, loc='upper right')
-    plt.title('Validation accuracy after pruning')
+    plt.title('Training accuracy after pruning')
     save_path = 'Plots/acc_len_pruning_' + str(len_factor) + '.png'
     plt.savefig(save_path, dpi=300)
     plt.show()

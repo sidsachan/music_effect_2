@@ -40,7 +40,6 @@ def train(model, train_loader, val_loader,  optimizer, args, verbose=True):
             # saving as a checkpoint to enable further training
             torch.save({
                 'epoch': ep,
-                'lr': args.lr,
                 'model_state_dict': model.state_dict(),
                 'optimizer_state_dict': optimizer.state_dict(),
                 'val_accuracy': val_acc,
@@ -49,7 +48,7 @@ def train(model, train_loader, val_loader,  optimizer, args, verbose=True):
             }, args.save_path)
             if verbose:
                 print('\nModel saved at epoch: {}, with validation accuracy: {:.0f}\n'.format(ep, val_acc))
-    return train_loss_list, val_loss_list, best_val_acc.item()
+    return train_loss_list, val_loss_list, best_val_acc
 
 
 # function to run validation and tests
@@ -70,10 +69,11 @@ def validate(model, data_loader, args):
 
 
 # function to load a save model -> can be used for further training  or evaluation
-def load_model(model, optimizer, file_loc):
+def load_model(model, optimizer, file_loc, verbose=False):
     checkpoint = torch.load(file_loc)
     model.load_state_dict(checkpoint['model_state_dict'])
     optimizer.load_state_dict(checkpoint['optimizer_state_dict'])
     val_accuracy = checkpoint['val_accuracy']
-    print('Loaded model had best validation accuracy: ', val_accuracy.item())
+    if verbose:
+        print('Loaded model had best validation accuracy: ', val_accuracy.item())
     return model, optimizer
