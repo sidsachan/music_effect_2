@@ -37,8 +37,8 @@ parser.add_argument('--seed', type=int, default=1, metavar='S', help='random see
 parser.add_argument('--save-path', type=Path, default=save_path_t1, help='path to save the learned model')
 parser.add_argument('--train_simple', type=bool, default=False, help='train model usual way')
 parser.add_argument('--train_chromosome', type=bool, default=False, help='train model given a string of chromosome')
-parser.add_argument('--prune-distinct', type=bool, default=True, help='pruning using cosine distinctiveness')
-parser.add_argument('--prune-gen-alg', type=bool, default=False, help='pruning using genetic algorithm')
+parser.add_argument('--prune-distinct', type=bool, default=False, help='pruning using cosine distinctiveness')
+parser.add_argument('--prune-gen-alg', type=bool, default=True, help='pruning using genetic algorithm')
 parser.add_argument('--gen-alg-input', type=bool, default=False, help='genetic algorithm input space selection')
 parser.add_argument('--eval_paths', type=bool, default=False, help='evaluate models saved in the paths')
 args = parser.parse_args()
@@ -119,23 +119,27 @@ def train_chromosome(df, chromosome, args, num_classes=3):
     model_list = []
     for i in range(len(train_df_list)):
         train_loader, val_loader, _ = get_data_loaders(train_df_list[i], val_df_list[i], test_df, column_list, args)
-        model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
-        optimizer = optim.Adam(model.parameters(), lr=args.lr)
-        train_loss, val_loss, _ = train(model, train_loader, val_loader, optimizer, args, verbose=False)
-        # plot_loss(train_loss, val_loss)
-        temp_model, optimizer = load_model(model, optimizer, save_path_t1)
-        eval_list = get_train_val_eval(temp_model, train_loader, val_loader, args)
-        print('Participant ', i + 1, ' for validation')
+        best_model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
+        best_val_acc = 0
+        for j in range(5):
+            model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
+            optimizer = optim.Adam(model.parameters(), lr=args.lr)
+            train_loss, val_loss, val_accy = train(model, train_loader, val_loader, optimizer, args, verbose=False)
+            if val_accy > best_val_acc:
+                best_model,_ = load_model(model, optimizer, save_path_t1)
+                best_val_acc = val_accy
+        eval_list = get_train_val_eval(best_model, train_loader, val_loader, args)
+        print('\nParticipant ', i + 1, ' for validation')
         print('Training accuracy: ', eval_list[1][0])
         print('Validation accuracy: ', eval_list[1][1])
-        print('\nEvaluation through sk-learn metrics')
+        # print('\nEvaluation through sk-learn metrics')
         print('Training F1 score: ', eval_list[2][0])
         print('Validation F1 score: ', eval_list[2][1])
         train_acc.append(eval_list[1][0])
         val_acc.append(eval_list[1][1])
         train_f1.append(eval_list[2][0])
         val_f1.append(eval_list[2][1])
-        model_list.append(temp_model)
+        model_list.append(best_model)
     print('Average training accuracy', np.mean(np.array(train_acc)))
     print('Average training F1-score', np.mean(np.array(train_f1)))
     print('Average validation accuracy', np.mean(np.array(val_acc)))
@@ -307,14 +311,14 @@ if args.gen_alg_input:
 
 # training model for a given chromosome
 if args.train_chromosome:
-    chromosome = '[1 1 1 0 0 1 1 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 1 0 1]'
+    chromosome = '[1 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 1 0]'
     model_list = train_chromosome(normalized_data_list[aby], chromosome, args)
     for i, m in enumerate(model_list):
         torch.save(m.state_dict(), f"Saved Models/baseline_model{i}.pth")
 # distinctive pruning
 if args.prune_distinct:
     # load model and run validation/test set through it
-    chromosome = '[1 1 1 0 0 1 1 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 1 0 1]'
+    chromosome = '[1 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 1 0]'
     train_df_list, val_df_list = split_participant_wise(normalized_data_list[aby], k=24)
     column_list = str_to_column_list(chromosome=chromosome)
     num_input_features = len(column_list) - 1
@@ -362,7 +366,7 @@ if args.prune_distinct:
                 similar_pairs, comp_pairs = determine_similar_pairs(angle_thresh=threshold, sim_mat=similarity_mat)
                 if len(similar_pairs) != 0:
                     idx = idx + 1
-                    print('Running pruning: ', idx)
+                    # print('Running pruning: ', idx)
                     h = h - 1
                     pruned_model = Layer3Net(num_input_features, h, num_classes)
                     pruned_model = remove_neuron_pair(temp_model, pruned_model, similar_pairs[0])
@@ -370,7 +374,7 @@ if args.prune_distinct:
                     temp_model.load_state_dict(pruned_model.state_dict())
                 elif len(comp_pairs) != 0:
                     idx = idx + 1
-                    print('Running pruning: ', idx)
+                    # print('Running pruning: ', idx)
                     h = h - 1
                     pruned_model = Layer3Net(num_input_features, h, num_classes)
                     pruned_model = remove_neuron_pair(temp_model, pruned_model, comp_pairs[0], complement=True)
@@ -401,38 +405,24 @@ if args.prune_distinct:
                     #         'val_accuracy': eval_list[1][1],
                     #     }, pruning_40thresh_distinct)
     # plotting the evaluation measures after pruning
-    train_loss_avg = np.round(np.mean(np.array(train_loss), axis=0),1)
-    val_loss_avg = np.round(np.mean(np.array(val_loss), axis=0),1)
-    train_acc_avg = np.round(np.mean(np.array(train_acc), axis=0),1)
-    val_acc_avg = np.round(np.mean(np.array(val_acc), axis=0),1)
-    train_f1_avg = np.round(np.mean(np.array(train_f1), axis=0),1)
-    val_f1_avg = np.round(np.mean(np.array(val_f1), axis=0),1)
-    num_neurons_pruned_avg = np.round(np.mean(np.array(num_neurons_pruned), axis=0),1)
+    train_loss_avg = np.round(np.mean(np.array(train_loss), axis=0), 2)
+    val_loss_avg = np.round(np.mean(np.array(val_loss), axis=0), 2)
+    train_acc_avg = np.round(np.mean(np.array(train_acc), axis=0), 2)
+    val_acc_avg = np.round(np.mean(np.array(val_acc), axis=0), 2)
+    train_f1_avg = np.round(np.mean(np.array(train_f1), axis=0), 2)
+    val_f1_avg = np.round(np.mean(np.array(val_f1), axis=0), 2)
+    num_neurons_pruned_avg = np.round(np.mean(np.array(num_neurons_pruned), axis=0), 2)
 
     plot_all_evals(train_loss_avg, val_loss_avg, num_neurons_pruned_avg, y_l='Average Loss')
     plot_all_evals(train_acc_avg, val_acc_avg, num_neurons_pruned_avg, y_l='Accuracies')
     plot_all_evals(train_f1_avg, val_f1_avg, num_neurons_pruned_avg, y_l='F1 score')
 
 # genetic algorithm pruning
-if args.prune_gen_alg:
-    # initializing the base model and data loaders according to the chromosome
-    chromosome = '[1 1 1 0 0 1 1 1 0 1 0 1 0 0 0 1 0 0 0 0 0 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 1 1 0 1 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 1 0 0 0 0 0 0 1 0 0 1 0 1]'
-    baseline_model_list = train_chromosome(normalized_data_list[aby], chromosome, args)
-    train_df_list, val_df_list = split_participant_wise(normalized_data_list[aby], k=24)
-    column_list = str_to_column_list(chromosome=chromosome)
-    num_input_features = len(column_list) - 1
-
-    # hyper parameters for the genetic algorithm
-    pop_size = 100
-    num_generations = 10
-    num_hidden_neurons = args.hidden_units_l1
-    population = initialize_pop(dna_size=num_hidden_neurons, pop_size=pop_size)
-    cross_rate = 0.8
-    mutation_rate = 0.1
-    len_factor = 4
-
+def gen_alg_pruning(train_df_list, val_df_list, baseline_model_list, num_input_features, cross_rate, mutation_rate, len_factor, pop_size = 50,num_generations = 10,num_hidden_neurons = args.hidden_units_l1):
     # lists for performance parameters for plots
+    length_best_acc = [[] for _ in range(24)]
     best_val_acc_per_model = [[] for _ in range(24)]
+    best_train_acc_per_model = [[] for _ in range(24)]
     mean_val_acc_per_model = [[] for _ in range(24)]
     mean_train_acc_per_model = [[] for _ in range(24)]
     mean_length_per_model = [[] for _ in range(24)]
@@ -440,8 +430,8 @@ if args.prune_gen_alg:
     mean_train_loss_per_model = [[] for _ in range(24)]
     mean_train_f1_per_model = [[] for _ in range(24)]
     mean_val_f1_per_model = [[] for _ in range(24)]
-
     for i in range(len(train_df_list)):
+        population = initialize_pop(dna_size=num_hidden_neurons, pop_size=pop_size)
         print('Model ', i)
         train_loader, val_loader, _ = get_data_loaders(train_df_list[i], val_df_list[i], test_df, column_list, args)
 
@@ -451,6 +441,17 @@ if args.prune_gen_alg:
         # load model and run validation/test set through it
         # base_model, _ = load_model(base_model, optimizer, best_path)
         eval_list = get_train_val_eval(base_model, train_loader, val_loader, args)
+
+        best_train_acc_per_model[i].append(eval_list[1][0])
+        best_val_acc_per_model[i].append(eval_list[1][1])
+        mean_val_acc_per_model[i].append(eval_list[1][1])
+        mean_val_loss_per_model[i].append(eval_list[0][1])
+        mean_length_per_model[i].append(20)
+        mean_train_acc_per_model[i].append(eval_list[1][0])
+        mean_train_loss_per_model[i].append(eval_list[0][0])
+        mean_train_f1_per_model[i].append(eval_list[2][0])
+        mean_val_f1_per_model[i].append(eval_list[2][1])
+
         # print('Evaluation through sk-learn metrics')
         # print('Training F1 score: ', eval_list[2][0])
         # print('Validation F1 score: ', eval_list[2][1])
@@ -498,28 +499,38 @@ if args.prune_gen_alg:
             best_idx = train_acc_list.index(max(train_acc_list))
             m_length = np.sum(population) / len(population)
             # updating the lists for the plots
-            best_val_acc_per_model[i].append(max(train_acc_list))
+            length_best_acc[i].append(np.sum(population[best_idx, :]))
+            best_train_acc_per_model[i].append(max(train_acc_list))
+            best_val_acc_per_model[i].append((val_acc_list[best_idx]))
+
             mean_val_acc_per_model[i].append(np.mean(np.array(val_acc_list)))
-            mean_val_loss_per_model[i].append(np.mean(np.array(val_loss_list)))
+            mean_val_loss_per_model[i].append(val_loss_list[best_idx])
             mean_length_per_model[i].append(m_length)
             mean_train_acc_per_model[i].append(np.mean(np.array(train_acc_list)))
-            mean_train_loss_per_model[i].append(np.mean(np.array(train_loss_list)))
-            mean_train_f1_per_model[i].append(np.mean(np.array(train_f1_list)))
-            mean_val_f1_per_model[i].append(np.mean(np.array(val_f1_list)))
+            mean_train_loss_per_model[i].append(train_loss_list[best_idx])
+            mean_train_f1_per_model[i].append(train_f1_list[best_idx])
+            mean_val_f1_per_model[i].append(val_f1_list[best_idx])
+
+            # mean_val_loss_per_model[i].append(np.mean(np.array(val_loss_list)))
+            # mean_train_loss_per_model[i].append(np.mean(np.array(train_loss_list)))
+            # mean_train_f1_per_model[i].append(np.mean(np.array(train_f1_list)))
+            # mean_val_f1_per_model[i].append(np.mean(np.array(val_f1_list)))
+
             # information about pruning performance
-            print('Generation', gen + 1)
-            print('Length of Chromosome', len(np.argwhere(population[best_idx, :] == 1)))
-            print('Average size of hidden layer', m_length)
-            print('Best training Accuracy', max(train_acc_list))
+            # print('Generation', gen + 1)
+            # print('Length of Chromosome', len(np.argwhere(population[best_idx, :] == 1)))
+            # print('Average size of hidden layer', m_length)
+            # print('Best training Accuracy', max(train_acc_list))
             # print('Corresponding chromosome', population[best_idx, :])
             # selecting new population, top 25
-            population = select_top_dual(population, train_acc_list, top_count=25, len_factor=len_factor)
+            population = select_top_dual(population, train_acc_list, top_count=10, len_factor=len_factor)
             # select probabilistic
             # population = select_probability(population, val_acc_list, len_factor=len_factor)
             # crossover and mutate
             population = cross_mutate(population, cross_rate, mutation_rate)
 
     # plotting the accuracy and mean size
+    best_train_acc_per_gen = np.mean(np.array(best_train_acc_per_model), axis=0)
     best_val_acc_per_gen = np.mean(np.array(best_val_acc_per_model), axis=0)
     mean_val_acc_per_gen = np.mean(np.array(mean_val_acc_per_model), axis=0)
     mean_val_loss_per_gen = np.mean(np.array(mean_val_loss_per_model), axis=0)
@@ -529,10 +540,162 @@ if args.prune_gen_alg:
     mean_train_f1_per_gen = np.mean(np.array(mean_train_f1_per_model), axis=0)
     mean_val_f1_per_gen = np.mean(np.array(mean_val_f1_per_model), axis=0)
 
-    plot_acc_size(best_acc_list=best_val_acc_per_gen, mean_acc_list=mean_train_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor)
+    idx_best_train = list(np.argmax(np.array(best_train_acc_per_model)[:, 1:], axis=1))
+    len_best = np.array(length_best_acc)[list(np.arange(24)), idx_best_train]
+    train_best = np.array(best_train_acc_per_model)[list(np.arange(24)), idx_best_train]
+    val_best = np.array(best_val_acc_per_model)[list(np.arange(24)), idx_best_train]
+    print('Best Average Training Accuracy: ', np.mean(train_best))
+    print('Best Average Validation Accuracy: ', np.mean(val_best))
+    print('Length of neuron: ', np.mean(len_best))
+
+    plot_acc_size(best_acc_list=best_train_acc_per_gen, mean_acc_list=mean_train_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor, lbl="Training")
+    plot_acc_size(best_acc_list=best_val_acc_per_gen, mean_acc_list=mean_val_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor, lbl="Validation")
     plot_eval_gen_pruning(mean_train_acc_per_gen, mean_val_acc_per_gen, y_l='Accuracy', len_factor=len_factor)
     plot_eval_gen_pruning(mean_train_loss_per_gen, mean_val_loss_per_gen, y_l='Loss', len_factor=len_factor)
     plot_eval_gen_pruning(mean_train_f1_per_gen, mean_val_f1_per_gen, y_l='F1 score', len_factor=len_factor)
+
+if args.prune_gen_alg:
+    # initializing the base model and data loaders according to the chromosome
+    chromosome = '[1 0 0 0 0 1 0 1 0 1 0 0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 1 1 1 1 0 0 0 1 0 0 0 0 1 0 0 0 1 0 0 1 1 0 0 0 1 0 0 1 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 1 1 1 0]'
+    train_df_list, val_df_list = split_participant_wise(normalized_data_list[aby], k=24)
+    column_list = str_to_column_list(chromosome=chromosome)
+    num_input_features = len(column_list) - 1
+    baseline_model_list = [Layer3Net(num_input_features, args.hidden_units_l1, num_classes) for i in range(24)]  # Note that you should adapt this to whatever method you use to create your models in the first place
+    for i, m in enumerate(baseline_model_list):
+        m.load_state_dict(torch.load(f"Saved Models/baseline_model{i}.pth"))
+    # hyper parameters for the genetic algorithm
+    pop_size = 50
+    num_generations = 10
+    num_hidden_neurons = args.hidden_units_l1
+    cross_rate = [0.8]
+    mutation_rate = [0.1]
+    len_factor = [0]
+    for cr in cross_rate:
+        for mr in mutation_rate:
+            for lf in len_factor:
+                print("Cross Rate: ", cr, "\t", "Mutation Rate: ", mr, "\t", "Length factor: ", lf)
+                gen_alg_pruning(train_df_list, val_df_list, baseline_model_list, num_input_features, cr, mr, lf, pop_size,num_generations, num_hidden_neurons)
+    # lists for performance parameters for plots
+    # best_val_acc_per_model = [[] for _ in range(24)]
+    # best_train_acc_per_model = [[] for _ in range(24)]
+    # mean_val_acc_per_model = [[] for _ in range(24)]
+    # mean_train_acc_per_model = [[] for _ in range(24)]
+    # mean_length_per_model = [[] for _ in range(24)]
+    # mean_val_loss_per_model = [[] for _ in range(24)]
+    # mean_train_loss_per_model = [[] for _ in range(24)]
+    # mean_train_f1_per_model = [[] for _ in range(24)]
+    # mean_val_f1_per_model = [[] for _ in range(24)]
+    #
+    # for i in range(len(train_df_list)):
+    #     population = initialize_pop(dna_size=num_hidden_neurons, pop_size=pop_size)
+    #     print('Model ', i)
+    #     train_loader, val_loader, _ = get_data_loaders(train_df_list[i], val_df_list[i], test_df, column_list, args)
+    #
+    #     base_model = baseline_model_list[i]
+    #     best_model = Layer3Net(num_input_features, args.hidden_units_l1, num_classes=num_classes)
+    #     optimizer = optim.Adam(base_model.parameters(), lr=args.lr)
+    #     # load model and run validation/test set through it
+    #     # base_model, _ = load_model(base_model, optimizer, best_path)
+    #     eval_list = get_train_val_eval(base_model, train_loader, val_loader, args)
+    #
+    #     best_train_acc_per_model[i].append(eval_list[1][0])
+    #     best_val_acc_per_model[i].append(eval_list[1][1])
+    #     mean_val_acc_per_model[i].append(eval_list[1][1])
+    #     mean_val_loss_per_model[i].append(eval_list[0][1])
+    #     mean_length_per_model[i].append(20)
+    #     mean_train_acc_per_model[i].append(eval_list[1][0])
+    #     mean_train_loss_per_model[i].append(eval_list[0][0])
+    #     mean_train_f1_per_model[i].append(eval_list[2][0])
+    #     mean_val_f1_per_model[i].append(eval_list[2][1])
+    #
+    #     # print('Evaluation through sk-learn metrics')
+    #     # print('Training F1 score: ', eval_list[2][0])
+    #     # print('Validation F1 score: ', eval_list[2][1])
+    #
+    #     # pruning algorithm through genetic algorithm
+    #     for gen in range(num_generations):
+    #         # check if all the elements in a row are zero, make these rows random
+    #         row_idx_zero = np.where(~population.any(axis=1))[0]
+    #         if len(row_idx_zero) > 0:
+    #             dna_len = population.shape[1]
+    #             population[row_idx_zero] = np.random.randint(0, 2, size=dna_len)
+    #         # evaluate the population
+    #         val_acc_list = []
+    #         val_loss_list = []
+    #         train_acc_list = []
+    #         train_loss_list = []
+    #         train_f1_list = []
+    #         val_f1_list = []
+    #         # best_val_acc = 0
+    #         for chromosome in population:
+    #             # new number of hidden neurons for the new model
+    #             new_num_hidden_neurons = np.sum(chromosome)
+    #             # copy parameters to new model
+    #             m_temp = Layer3Net(num_input_features, new_num_hidden_neurons, num_classes=num_classes)
+    #             new_model = get_new_model(base_model, m_temp, chromosome=chromosome)
+    #             # run validation for the new model
+    #             eval_list = get_train_val_eval(new_model, train_loader, val_loader, args)
+    #             # evaluation parameters
+    #             train_loss_list.append(eval_list[0][0])
+    #             val_loss_list.append(eval_list[0][1])
+    #             train_acc_list.append(eval_list[1][0])
+    #             val_acc_list.append(eval_list[1][1])
+    #             train_f1_list.append(eval_list[2][0])
+    #             val_f1_list.append(eval_list[2][1])
+    #             # saving best model after pruning
+    #             # if (eval_list[1][1] > best_val_acc):
+    #             #     best_model = new_model
+    #             #     best_val_acc = eval_list[1][1]
+    #             #     torch.save({
+    #             #         'model_state_dict': new_model.state_dict(),
+    #             #         'optimizer_state_dict': optimizer.state_dict(),
+    #             #         'val_accuracy': eval_list[1][1],
+    #             #     }, best_after_pruning_genetic_alg)
+    #         # best validation accuracy, chromosome
+    #         best_idx = train_acc_list.index(max(train_acc_list))
+    #         m_length = np.sum(population) / len(population)
+    #         # updating the lists for the plots
+    #         best_train_acc_per_model[i].append(max(train_acc_list))
+    #         best_val_acc_per_model[i].append(max(val_acc_list))
+    #         mean_val_acc_per_model[i].append(np.mean(np.array(val_acc_list)))
+    #         mean_val_loss_per_model[i].append(np.mean(np.array(val_loss_list)))
+    #         mean_length_per_model[i].append(m_length)
+    #         mean_train_acc_per_model[i].append(np.mean(np.array(train_acc_list)))
+    #         mean_train_loss_per_model[i].append(np.mean(np.array(train_loss_list)))
+    #         mean_train_f1_per_model[i].append(np.mean(np.array(train_f1_list)))
+    #         mean_val_f1_per_model[i].append(np.mean(np.array(val_f1_list)))
+    #         # information about pruning performance
+    #         # print('Generation', gen + 1)
+    #         # print('Length of Chromosome', len(np.argwhere(population[best_idx, :] == 1)))
+    #         # print('Average size of hidden layer', m_length)
+    #         # print('Best training Accuracy', max(train_acc_list))
+    #         # print('Corresponding chromosome', population[best_idx, :])
+    #         # selecting new population, top 25
+    #         population = select_top_dual(population, train_acc_list, top_count=10, len_factor=len_factor)
+    #         # select probabilistic
+    #         # population = select_probability(population, val_acc_list, len_factor=len_factor)
+    #         # crossover and mutate
+    #         population = cross_mutate(population, cross_rate, mutation_rate)
+    #
+    # # plotting the accuracy and mean size
+    # best_train_acc_per_gen = np.mean(np.array(best_train_acc_per_model), axis=0)
+    # best_val_acc_per_gen = np.mean(np.array(best_val_acc_per_model), axis=0)
+    # mean_val_acc_per_gen = np.mean(np.array(mean_val_acc_per_model), axis=0)
+    # mean_val_loss_per_gen = np.mean(np.array(mean_val_loss_per_model), axis=0)
+    # mean_length_per_gen = np.mean(np.array(mean_length_per_model), axis=0)
+    # mean_train_acc_per_gen = np.mean(np.array(mean_train_acc_per_model), axis=0)
+    # mean_train_loss_per_gen = np.mean(np.array(mean_train_loss_per_model), axis=0)
+    # mean_train_f1_per_gen = np.mean(np.array(mean_train_f1_per_model), axis=0)
+    # mean_val_f1_per_gen = np.mean(np.array(mean_val_f1_per_model), axis=0)
+    #
+    # print('Best Average Training Accuracy: ', np.mean(np.max(np.array(best_train_acc_per_model), axis=1)))
+    # print('Best Average Validation Accuracy: ', np.mean(np.max(np.array(best_val_acc_per_model), axis=1)))
+    #
+    # plot_acc_size(best_acc_list=best_train_acc_per_gen, mean_acc_list=mean_train_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor, lbl="Training")
+    # plot_acc_size(best_acc_list=best_val_acc_per_gen, mean_acc_list=mean_val_acc_per_gen, mean_length=mean_length_per_gen, len_factor=len_factor, lbl="Validation")
+    # plot_eval_gen_pruning(mean_train_acc_per_gen, mean_val_acc_per_gen, y_l='Accuracy', len_factor=len_factor)
+    # plot_eval_gen_pruning(mean_train_loss_per_gen, mean_val_loss_per_gen, y_l='Loss', len_factor=len_factor)
+    # plot_eval_gen_pruning(mean_train_f1_per_gen, mean_val_f1_per_gen, y_l='F1 score', len_factor=len_factor)
 
 # evaluate models saved in the paths
 if args.eval_paths:

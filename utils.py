@@ -153,11 +153,11 @@ def get_train_val_eval(model, train_loader, val_loader, args, verbose=False):
 def plot_all_evals(train_eval, val_eval, num_removed, y_l):
     x = np.arange(0, 60, 5)
     plt.plot(x, train_eval, label='Training data', marker='o')
-    plt.plot(x, val_eval, label='Validation data', marker='*')
+    plt.plot(x, val_eval, label='Validation data', marker='v')
 
     for i in range(len(x)):
-        plt.annotate('('+str(num_removed[i])+')', (x[i], train_eval[i]), xytext=(-10, 20), textcoords='offset pixels')
-        plt.annotate('('+str(num_removed[i])+')', (x[i], val_eval[i]), xytext=(-10, 20), textcoords='offset pixels')
+        plt.annotate('('+str(num_removed[i])+')', (x[i], train_eval[i]), xytext=(5, 20), textcoords='offset pixels')
+        plt.annotate('('+str(num_removed[i])+')', (x[i], val_eval[i]), xytext=(5, 20), textcoords='offset pixels')
     plt.legend(loc='upper right')
     plt.xlabel('Threshold angle')
     plt.ylabel(y_l)
@@ -213,22 +213,22 @@ def get_new_model(base_model, new_model, chromosome):
 
 
 # plotting mean and best accuracy after pruning, genetic algorithm
-def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor):
+def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor, lbl):
     x = np.arange(len(best_acc_list))
     fig, ax1 = plt.subplots()
     ax1.set_xlabel('Generation')
-    ax1.set_ylabel('Training Accuracy')
-    lns1 = ax1.plot(x, best_acc_list, label='Best Accuracy', color='tab:red')
-    lns2 = ax1.plot(x, mean_acc_list, label='Mean Accuracy', color='tab:green')
+    ax1.set_ylabel(lbl + ' Accuracy')
+    lns1 = ax1.plot(x, best_acc_list, label='Best Accuracy', color='tab:red', marker='o')
+    lns2 = ax1.plot(x, mean_acc_list, label='Mean Accuracy', color='tab:green', marker='v')
     ax2 = ax1.twinx()
     ax2.set_ylabel('Mean size of the Hidden Layer')
-    lns3 = ax2.plot(x, mean_length, label='Mean Size', color='tab:blue')
+    lns3 = ax2.plot(x, mean_length, label='Mean Size', color='tab:blue', marker='s')
     # added these three lines
     lns = lns1 + lns2 + lns3
     labs = [l.get_label() for l in lns]
     ax1.legend(lns, labs, loc='upper right')
-    plt.title('Training accuracy after pruning')
-    save_path = 'Plots/acc_len_pruning_' + str(len_factor) + '.png'
+    plt.title(lbl + ' accuracy after pruning')
+    save_path = 'Plots/'+lbl+'_acc_len_pruning_' + str(len_factor) + '.png'
     plt.savefig(save_path, dpi=300)
     plt.show()
 
@@ -236,8 +236,8 @@ def plot_acc_size(best_acc_list, mean_acc_list, mean_length, len_factor):
 # plot train and validation performance after pruning
 def plot_eval_gen_pruning(train_eval, val_eval, y_l, len_factor):
     x = np.arange(len(train_eval))
-    plt.plot(x, train_eval, label='Training')
-    plt.plot(x, val_eval, label='Validation')
+    plt.plot(x, train_eval, label='Training', marker='o')
+    plt.plot(x, val_eval, label='Validation', marker='v')
     plt.legend(loc='upper right')
     plt.xlabel('Generation')
     plt.ylabel('Average ' + y_l)
